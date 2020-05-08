@@ -1,0 +1,21 @@
+/* components/bottomup/bottomup.wxss */
+.layout_horizon{
+  height:100rpx;
+  align-items: center;
+  display:flex;
+  flex-flow: row;
+  justify-content: space-around;
+  background-color: ghostwhite;
+  font-size: 30rpx;
+  font-style: initial;
+  font-weight: 600;
+}
+
+.modal_inner{
+  height:70rpx;
+  width: 70rpx;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+}

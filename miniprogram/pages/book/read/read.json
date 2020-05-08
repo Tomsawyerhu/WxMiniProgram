@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+   "bottomup":"../../../components/bottomup/bottomup",
+   "book-dir":"../../../components/directory/directory"
+  }
+}

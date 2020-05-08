@@ -1,0 +1,15 @@
+<!--底部弹出框组件-->
+<view class="layout_horizon">
+  <view class="modal_inner">
+    <image src="./dir_icon.jpg" style="width:70rpx"></image>
+    目录
+  </view>
+  <view class="modal_inner">
+    <image src="./listen_icon.gif" style="width:80rpx"></image>
+    听书
+  </view>
+  <view class="modal_inner">
+    <image src="./set_icon.jpg" style="width:70rpx"></image>
+    设置
+  </view>
+</view>

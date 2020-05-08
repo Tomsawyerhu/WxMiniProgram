@@ -1,0 +1,30 @@
+/* components/directory/directory.wxss */
+.layout_vertical{
+  display:flex;
+  flex-flow: column;
+}
+#book_name{
+  font-weight: bolder;
+  font-size:xx-large;
+  margin-left: 80rpx;
+}
+#author{
+  font-size: small;
+  color: silver;
+  margin-left: 120rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+.charpter{
+  margin-left: 40rpx;
+  margin-top: 40rpx;
+  color: darkgray;
+}
+
+.divLine{
+  background: #E0E3DA;
+  width: 92%;
+  height: 2.5rpx;
+  align-self: center;
+ }
+ 

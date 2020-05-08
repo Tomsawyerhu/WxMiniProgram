@@ -1,0 +1,4 @@
+<!--pages/book/read/read.wxml-->
+<view>
+  <book-dir charpternum="10" bookname="百年孤独" author="马尔克斯"></book-dir>
+</view>

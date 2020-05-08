@@ -1,0 +1,37 @@
+/* pages/book/read/read.wxss */
+
+@keyframes slidedown{
+  from{
+    height: 0;
+  }to{
+    height: 50rpx;
+  }
+}
+@keyframes slideup{
+  from{
+    height: 50rpx;
+  }to{
+    height: 0;
+  }
+}
+
+.down{
+  animation: slidedown 1s;
+}
+.up{
+  animation: slideup 1s;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+#item_list view{
+  text-align:middle;
+  overflow: auto;
+  white-space: nowrap;
+}
