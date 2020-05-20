@@ -1,0 +1,14 @@
+/* components/bookcard/bookcard.wxss */
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.content{
+  font-size: 10px;
+}
+
+.card{
+  text-align: center;
+}

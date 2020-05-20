@@ -1,0 +1,44 @@
+<i-card thumb="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg">
+	<view slot="content">
+		<view class="content-item">
+			<view>
+				推荐指数
+				<i-rate value="{{starIndex}}">
+				</i-rate>
+			</view>
+			<view class="silver-small float-right-bottom">{{readers}}人读过</view>
+		</view>
+
+	</view>
+	<view slot="footer">
+		<view class="caption-wrap">
+			<text class="caption-title" style="font-size:15px">图书一览</text>
+      <text>(未收藏之前部分信息可见)</text>
+			<i-collapse name="{{name}}">
+				<i-collapse-item title="基本介绍" name="name1">
+					<view slot="content">
+						{{charpter0}}
+					</view>
+				</i-collapse-item>
+				<i-collapse-item title="序章" name="name2">
+					<view slot="content" i-class-content="green-text">
+						{{charpter1}}
+					</view>
+				</i-collapse-item>
+				<i-collapse-item wx:for="{{content}}" title="第{{index+1}}章" name="name3" >
+					<view slot="content">
+						{{item}}
+					</view>
+				</i-collapse-item>
+			</i-collapse>
+		</view>
+	</view>
+</i-card>
+
+<!--底部标签栏-->
+<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
+	<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+	<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
+	<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+	<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+</i-tab-bar>

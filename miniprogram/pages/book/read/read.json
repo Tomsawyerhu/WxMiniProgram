@@ -1,6 +1,9 @@
 {
   "usingComponents": {
    "bottomup":"../../../components/bottomup/bottomup",
-   "book-dir":"../../../components/directory/directory"
+   "book-dir":"../../../components/directory/directory",
+   "i-card":"../../../dist/card",
+   "i-page": "../../dist/page/index",
+   "i-swipeout": "../../dist/swipeout/index"
   }
 }

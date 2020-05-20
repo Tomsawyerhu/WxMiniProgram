@@ -31,10 +31,7 @@ Component({
   methods: {
     jump_to_certain_charpter:function(charpter){
       wx.navigateTo({
-        url: '../../pages/book/read',
-        data:{
-          charpter:charpter
-        }
+        url: '../../pages/book/read?charpter='+charpter,
       })
 
     }//跳转至指定书的指定章节

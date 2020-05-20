@@ -16,5 +16,30 @@ App({
     }
 
     this.globalData = {}
-  }
+
+  },
+  //设置监听器
+  setWatcher:function(data,watch){
+    Object.keys(data).forEach(v=>{
+      this.observe(data,v,watch)
+    })
+  },
+  observe(obj, key,watchFun) {
+    var val = obj[key]; // 原值
+    Object.defineProperty(obj, key, {
+        configurable: true,
+        enumerable: true,
+        set: function(value) {
+            val = value;
+            watchFun(value,val); // 调用setter时，调用对应函数
+        },
+        get: function() {
+            return val;
+        }
+    })
+},
+data:{
+  
+}
+
 })

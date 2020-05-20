@@ -1,4 +1,9 @@
 <!--pages/book/read/read.wxml-->
-<view>
-  <book-dir charpternum="10" bookname="百年孤独" author="马尔克斯"></book-dir>
+<view class="perspective">
+	<view class="book-wrap">
+		<view wx:for="{{pages}}" animation="{{index==anindex?ani:''}}" bindtransitionend='animationEnd' class="page"  bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+			<view class="page-content">123456\n789012345453456sssssss\nsssssssssssssssssssssssssss\nssssssssssssssss</view>
+		</view>
+	</view>
+  <view class="bottom-page">1</view>
 </view>

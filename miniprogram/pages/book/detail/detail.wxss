@@ -1,0 +1,18 @@
+/* miniprogram/pages/book/detail/detail.wxss */
+.content{
+  display: flex;
+  flex-flow: row;
+}
+.content-item{
+  display: flex;
+  flex-flow:nowrap;
+}
+.silver-small{
+  font-size: 10px;
+  color: silver;
+}
+.float-right-bottom{
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}

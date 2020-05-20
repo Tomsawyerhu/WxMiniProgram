@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "searchbar1": "/miniprogram/miniprogram_npm/weui-miniprogram/searchbar/searchbar"
+  },
+  "navigationBarTitleText": "UI组件库"
+}

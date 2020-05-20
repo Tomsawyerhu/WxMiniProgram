@@ -1,0 +1,28 @@
+<!--miniprogram/pages/book/index/index.wxml-->
+<view>
+	<i-sticky scrollTop="{{scrollTop}}" class="sticky">
+		<i-sticky-item i-class="i-sticky-demo-title" >
+      <!--首部搜索栏-->
+			<view slot="title">
+				<i-icon class="float-right"  type="search" size="20" color="#80848f" />
+			</view>
+			<view slot="content">
+				<!--中间部分(可滚动)-->
+				<i-grid wx:for="{{index1}}" wx:for-index="rowindex" >
+					<i-grid-item wx:for="{{index2}}" wx:for-index="colindex">
+						<book-card a="马尔克斯"  p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独"  wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
+					</i-grid-item>
+					
+				</i-grid>
+			</view>
+		</i-sticky-item>
+	</i-sticky>
+
+	<!--底部标签栏-->
+	<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
+		<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+		<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
+		<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+		<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+	</i-tab-bar>
+</view>
