@@ -1,14 +1,15 @@
 .perspective {
-  margin-top: 0px;
-  perspective: 800px;
+  margin-top: 0vh;
   transform-style: preserve-3d;
+  height: 80vh;
 }
 
 .book-wrap {
-  width: 320px;
-  height: 400px;
+  width: 44vh;
+  height: 80vh;
   position: relative;
-  margin: 0 auto;
+  margin-left: 2vh;
+  margin-right: 2vh;
   transform: rotateX(25deg);
   transform-style: preserve-3d;
 }
@@ -24,33 +25,72 @@
   justify-content: center;
   align-items: center;
   transform-origin: left;
-  border: 10px solid black;
-  border-radius: 10px 5px 5px 0;
-  background: -webkit-radial-gradient(white,white,white,gray)
+  border: 2vh solid black;
+  border-radius: 2vh 1vh 1vh 0;
+  background: -webkit-radial-gradient(white, white, white, gray)
 }
 
-.page-content{
+.page-content {
   font-size: medium;
   font-style: italic;
   color: black;
-  height: 300px;
-  width: 200px;
-  border-radius: 30px;
-  
+  height: 60vh;
+  width: 30vh;
+  border-radius: 5vh;
 }
 
 .bottom-page {
   position: relative;
-  margin-top: 5px;
-  height: 40px;
-  border: 12px solid black;
-  border-right: 0px;
-  margin-left: -20px;
+  margin-top: -1.5vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  height: 5vh;
+  border: 2vh solid #333333;
+  width: 44vh;
   transform: rotateX(0deg) rotateY(0deg);
-  border-radius: 0px 0px 0px 30px;
-  border-left: 12px solid #333333;
-  border-bottom: 12px solid #333333;
-  background: -webkit-linear-gradient(
-    white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181),white,rgb(186, 181, 181)
-    );
+  border-radius: 0vh 0vh 5vh 10vh;
+  border-left: 2vh solid #333333;
+  border-bottom: 2vh solid #333333;
+  background: -webkit-linear-gradient(white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181));
+}
+
+
+.mask{
+  margin-top: 0;
+}
+.directory-area {
+  background: -webkit-linear-gradient(gray, rgba(0, 0, 0, 0.5));
+  height: 30vh;
+  width: 20vh;
+  border-radius: 1vh;
+  border-style: groove;
+}
+
+.function-bar{
+  margin-top: 12vh;
+  display: flex;
+  flex-flow: column;
+  
+}
+
+/* 底部功能栏 */
+.layout_horizon{
+  height:100rpx;
+  align-items: center;
+  display:flex;
+  flex-flow: row;
+  justify-content: space-around;
+  background-color: ghostwhite;
+  font-size: 30rpx;
+  font-style: initial;
+  font-weight: 600;
+}
+
+.modal_inner{
+  height:70rpx;
+  width: 70rpx;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
 }

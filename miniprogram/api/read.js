@@ -1,20 +1,22 @@
-const requestPagesAPI=function(charpter,line,word){
-  var that=this
-  wx.request({
-    url: 'xxx?charpter='+charpter,//请求书的某一章节的内容
-    data:{
-      'line':line,//每页多少行
-      'word':word//每行多少字
-    },//分页要求
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    success:function(res){
-      
-    },
-    fail:function (res) {
-      
-    }
+const requestPagesAPI = function (book,charpter, line, word) {
+  var that = this
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/book/getCharpterAsPages?book='+book +"&charpter="+ charpter+"&line="+line+"&word="+word, //请求书的某一章节的内容
+      method:"GET",
+      //headers: {
+       // 'Content-Type': 'application/json'
+      //},
+      success: function (res) { 
+        console.log(res)
+        let result=res.data.content
+        resolve(result)
+      }, 
+      fail: function (res) {
+        reject(res.data.message)//带上错误信息
+      }
+    })
   })
+
 }
 export default requestPagesAPI

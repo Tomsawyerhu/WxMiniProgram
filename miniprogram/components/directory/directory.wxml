@@ -1,12 +1,18 @@
 <!--components/directory/directory.wxml-->
 <!--图书目录组件-->
 <view class="layout_vertical">
-  <block>
-   <text id="book_name">{{bookname}}</text>
-   <text id="author">{{author}}</text>
-  </block>
-  <block wx:for="{{charpternum+1}}" wx:if="{{item>0}}" >
-    <view class="charpter" bindtap="jump_to_certain_charpter({{item}})">{{"第"+item+"章"}}</view>
-    <view class="divLine"></view>
-  </block>
+	<view class="horizon_center layout_vertical">
+		<block>
+			<text id="book_name">{{bookname}}</text>
+		</block>
+		<block>
+			<text id="author">{{author}}</text>
+		</block>
+	</view>
+  <scroll-view scroll-y="true" class="scroll">
+	<block wx:for="{{charpternum+1}}" wx:if="{{item>0}}">
+		<view class="charpter" bindtap="jump_to_certain_charpter({{item}})">{{"第"+item+"章"}}</view>
+		<view class="divLine"></view>
+	</block>
+  </scroll-view>
 </view>

@@ -3,21 +3,26 @@
   display:flex;
   flex-flow: column;
 }
+.horizon_center{
+  text-align: center;
+  margin-bottom: 1vh;
+}
 #book_name{
   font-weight: bolder;
-  font-size:xx-large;
-  margin-left: 80rpx;
+  font-size:2vh;
 }
 #author{
-  font-size: small;
+  font-size: 1vh;
   color: silver;
-  margin-left: 120rpx;
-  margin-top: 10rpx;
-  margin-bottom: 30rpx;
+  margin-top: 0.5vh;
+}
+.scroll{
+  height:20vh
 }
 .charpter{
-  margin-left: 40rpx;
-  margin-top: 40rpx;
+  margin-left: 3vh;
+  margin-bottom:1vh;
+  font-size: small;
   color: darkgray;
 }
 

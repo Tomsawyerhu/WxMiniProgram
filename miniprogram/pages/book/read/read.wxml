@@ -1,9 +1,31 @@
 <!--pages/book/read/read.wxml-->
+<i-drawer mode="left" visible="{{showDirectory}}" bind:close="toggleLeft" class="mask" mask="{{false}}">
+	<view class="directory-area">
+		<book-dir bookname="百年孤独" charpternum="100" author="马尔克斯" class="directory"></book-dir>
+		<i-icon type="narrow" size="28" color="#80848f" />
+	</view>
+</i-drawer>
 <view class="perspective">
 	<view class="book-wrap">
-		<view wx:for="{{pages}}" animation="{{index==anindex?ani:''}}" bindtransitionend='animationEnd' class="page"  bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
-			<view class="page-content">123456\n789012345453456sssssss\nsssssssssssssssssssssssssss\nssssssssssssssss</view>
+		<view wx:for="{{pages}}" animation="{{pages.length-index-1==anindex?ani:''}}" bindtransitionend='animationEnd' class="page" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+			<view class="page-content">{{pages[pages.length-index-1]}}</view>
 		</view>
 	</view>
-  <view class="bottom-page">1</view>
+	<view class="bottom-page"></view>
+</view>
+<view class="function-bar">
+	<view class="layout_horizon">
+		<view class="modal_inner" bindtap="toggleLeft">
+			<image src="./img/dir_icon.jpg" style="width:70rpx" ></image>
+			目录
+		</view>
+		<view class="modal_inner">
+			<image src="./img/listen_icon.gif" style="width:80rpx"></image>
+			听书
+		</view>
+		<view class="modal_inner">
+			<image src="./img/set_icon.jpg" style="width:70rpx"></image>
+			设置
+		</view>
+	</view>
 </view>

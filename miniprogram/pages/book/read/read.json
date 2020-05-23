@@ -1,9 +1,11 @@
 {
   "usingComponents": {
-   "bottomup":"../../../components/bottomup/bottomup",
    "book-dir":"../../../components/directory/directory",
    "i-card":"../../../dist/card",
    "i-page": "../../dist/page/index",
-   "i-swipeout": "../../dist/swipeout/index"
-  }
+   "i-swipeout": "../../dist/swipeout/index",
+   "i-drawer": "../../dist/drawer/index"
+  },
+  "disableScroll":true,
+  "enablePullDownRefresh":false
 }

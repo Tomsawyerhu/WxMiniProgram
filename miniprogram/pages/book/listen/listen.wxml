@@ -1,0 +1,26 @@
+<!--miniprogram/pages/book/listen/listen.wxml-->
+<i-icon type=narrow" size="25" color="#80848f" class="narrow"/>
+<view class="img">
+	<image src="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" class="img-content"></image>
+</view>
+
+<view class="description">
+<view id="description-title">{{desTitle}}</view>
+<view id="description-content">{{desContent}}</view>
+</view>
+
+<view class="progress">
+	<view class="progress-item">{{currentProgressFormat}}</view>
+	<slider class="progress-content" max="{{maxProgress}}" value="{{currentProgress}}" min="0" step="1" selected-color="blue" backgroundColor="yellow" bindchange="bindchange"></slider>
+	<view class="progress-item">{{maxProgressFormat}}</view>
+</view>
+
+
+<view class="function">
+<i-icon type="switch" size="25" color="#80848f" bindtap="switchCharpter"/>
+<i-icon type="return" size="30" color="#80848f" bindtap="prePlay"/>
+<i-icon type="play_fill" wx-if="{{!isPlay}}" size="35" color="#80848f" bindtap="play"/>
+<i-icon type="suspend" wx-if="{{isPlay}}" size="35" color="#80848f" bindtap="pause"/>
+<i-icon type="enter" size="30" color="#80848f" bindtap="postPlay"/>
+<i-icon type="refresh" size="25" color="#80848f" bindtap="rePlay"/>
+</view>

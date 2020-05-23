@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/book/listen/listen",
     "pages/book/read/read",
     "pages/book/detail/detail",
     "pages/book/index/index",

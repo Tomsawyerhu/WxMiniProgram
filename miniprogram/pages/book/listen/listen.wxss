@@ -1,0 +1,56 @@
+/* miniprogram/pages/book/listen/listen.wxss */
+.narrow{
+  position: absolute;
+  transform: translateX(650rpx) translateY(1vh);
+
+}
+.img {
+  transform: translateY(10vh);
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.img-content {
+  width: 25vh;
+  height: 30vh;
+}
+
+.progress {
+  margin-top: 16vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.progress-content {
+  width: 30vh;
+}
+.progress-item {
+    font-size: small;
+    color: gray;
+    margin: auto;
+}
+
+.function{
+  margin-top: 10vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.description{
+  display: flex;
+  flex-flow: column;
+  margin-top: 10vh;
+  align-items:center ;
+}
+
+#description-title{
+  font-size: medium;
+  color: black;
+}
+#description-content{
+  font-size: x-small;
+  color: gray;
+}
+
