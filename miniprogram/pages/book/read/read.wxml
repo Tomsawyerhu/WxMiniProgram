@@ -1,22 +1,51 @@
 <!--pages/book/read/read.wxml-->
-<i-drawer mode="left" visible="{{showDirectory}}" bind:close="toggleLeft" class="mask" mask="{{false}}">
+<i-modal visible="{{ showSettings }}" bind:ok="handleSettingOk" bind:cancel="handleSettingCancel">
+	<view>
+		<view class="setting-item">
+			<view class="setting-item-text">字体颜色</view>
+			<slider class="slider" max="10000000" value="{{currentFontColorValue}}" min="0" step="50" selected-color="blue" backgroundColor="yellow" bindchange="bindchange">
+			</slider>
+			<view class="color-sample" style="background-color:{{currentFontColor}}"></view>
+		</view>
+		<view class="setting-item">
+			<view class="setting-item-text">书本颜色</view>
+			<slider class="slider" max="10000000" value="{{currentBookColorValue}}" min="0" step="50" selected-color="blue" backgroundColor="yellow" bindchange="bindchange2">
+			</slider>
+			<view class="color-sample" style="background-color:{{currentBookColor}}"></view>
+		</view>
+		<view class="setting-item">
+			<view class="setting-item-text">护眼模式</view>
+			<switch value="{{switch}}" bind:change="onSwitchChange" slot="footer">
+			</switch>
+		</view>
+	</view>
+</i-modal>
+
+<i-drawer mode="left" visible="{{showDirectory}}" bind:close="toggleLeft" class="mask" mask="{{false}}" hidden="{{ showSettings }}">
 	<view class="directory-area">
 		<book-dir bookname="百年孤独" charpternum="100" author="马尔克斯" class="directory"></book-dir>
 		<i-icon type="narrow" size="28" color="#80848f" />
 	</view>
 </i-drawer>
-<view class="perspective">
+
+<view class="perspective" hidden="{{ showSettings }}">
 	<view class="book-wrap">
-		<view wx:for="{{pages}}" animation="{{pages.length-index-1==anindex?ani:''}}" bindtransitionend='animationEnd' class="page" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
-			<view class="page-content">{{pages[pages.length-index-1]}}</view>
+		<view 
+		wx:for="{{pages}}" 
+		animation="{{pages.length-index-1==anindex?ani:''}}" 
+		bindtransitionend='animationEnd' 
+		class="page" 
+		style="border-color:{{bookColor}};background:-webkit-radial-gradient(white, white, white, {{bookColor}});{{pages.length-index-1>=pagenum?'':'transform:rotateY(-180deg)'}}" 
+		bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+			<view class="page-content" style="color:{{pageFontColor}}">{{pages[pages.length-index-1]}}</view>
 		</view>
 	</view>
-	<view class="bottom-page"></view>
+	<view class="bottom-page" style="border-color:{{bookColor}};border-left-color:{{bookColor}};border-bottom-color:{{bookColor}}"></view>
 </view>
-<view class="function-bar">
+<view class="function-bar" hidden="{{ showSettings }}">
 	<view class="layout_horizon">
 		<view class="modal_inner" bindtap="toggleLeft">
-			<image src="./img/dir_icon.jpg" style="width:70rpx" ></image>
+			<image src="./img/dir_icon.jpg" style="width:70rpx"></image>
 			目录
 		</view>
 		<view class="modal_inner">
@@ -24,7 +53,7 @@
 			听书
 		</view>
 		<view class="modal_inner">
-			<image src="./img/set_icon.jpg" style="width:70rpx"></image>
+			<image src="./img/set_icon.jpg" style="width:70rpx" bindtap="openSettings"></image>
 			设置
 		</view>
 	</view>

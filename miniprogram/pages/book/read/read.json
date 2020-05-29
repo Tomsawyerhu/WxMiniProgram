@@ -2,9 +2,15 @@
   "usingComponents": {
    "book-dir":"../../../components/directory/directory",
    "i-card":"../../../dist/card",
-   "i-page": "../../dist/page/index",
-   "i-swipeout": "../../dist/swipeout/index",
-   "i-drawer": "../../dist/drawer/index"
+   "i-page": "../../../dist/page/index",
+   "i-swipeout": "../../../dist/swipeout/index",
+   "i-drawer": "../../../dist/drawer/index",
+   "i-modal": "../../../dist/modal/index",
+   "i-switch": "../../../dist/switch/index",
+    "i-cell-group": "../../../dist/cell-group/index",
+    "i-cell": "../../../dist/cell/index"
+
+
   },
   "disableScroll":true,
   "enablePullDownRefresh":false

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pagenum: 0, //页数初始为0
+    pagenum: 2, //页数初始为0
     line: 20,
     word: 15,
     pages: ["page1", "page2", "page3", "page4"], // 缓存页
@@ -22,7 +22,23 @@ Page({
     //防止在翻页过程中出现用户滑动操作
     status: "free",
     //左侧目录
-    showDirectory:false
+    showDirectory:false,
+    //字体颜色
+    pageFontColor:"#000000",
+    //书本颜色
+    bookColor:"#000000",
+    //设置
+    showSettings:false,
+    //设置-护眼模式开关
+    switch : false,
+    //设置字体颜色
+    currentFontColorValue:0,
+    //设置字体颜色
+    currentFontColor:"#000000",
+    //设置书本颜色
+    currentBookColorValue:0,
+    //设置书本颜色
+    currentBookColor:"#000000",
   },
  
   animationEnd() {
@@ -70,7 +86,6 @@ Page({
       console.log("错误码：" + res.data.message)
       //todo
     })
-
   },
 
 
@@ -191,5 +206,70 @@ Page({
     this.setData({
         'showDirectory': !this.data.showDirectory
     });
+},
+openSettings:function(){
+  this.setData({
+    showSettings: true
+});
+},
+handleSettingOk:function(){
+  this.setData({
+    pageFontColor:this.data.currentFontColor,
+    bookColor:this.data.currentBookColor,
+    showSettings:false
+  })
+  if(this.data.switch){
+    wx.setScreenBrightness({
+      value: 0.4,
+    })
+  }else{
+    wx.setScreenBrightness({
+      value:0.8,
+    })
+  }
+},
+handleSettingCancel:function(){
+  this.setData({
+    showSettings:false
+  })
+},
+onSwitchChange(event){
+  const detail = event.detail;
+  this.setData({
+      'switch' : detail.value
+  })
+  console.log(detail.value)
+},
+
+//字体颜色滑动条
+bindchange: function (e) {
+  //console.log(e)
+  let newValue = e.detail.value;
+  this.setData({
+    'currentFontColorValue': newValue,
+    'currentFontColor':'#'+this.formatZero(String(this.ten_to_sixteen(newValue)),6)
+  })
+},
+
+//书本颜色滑动条
+bindchange2: function (e) {
+  //console.log(e)
+  let newValue = e.detail.value;
+  this.setData({
+    'currentBookColorValue': newValue,
+    'currentBookColor':'#'+this.formatZero(String(this.ten_to_sixteen(newValue)),6)
+  })
+},
+
+//十进制转16进制
+ten_to_sixteen:function(number){
+  let a=number.toString(16)
+  console.log(a)
+  return a
+},
+//左侧补零
+formatZero:function(num, len) {
+  if(String(num).length > len) return num;
+  return (Array(len).join(0) + num).slice(-len);
 }
 })

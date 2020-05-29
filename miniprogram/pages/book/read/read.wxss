@@ -25,7 +25,7 @@
   justify-content: center;
   align-items: center;
   transform-origin: left;
-  border: 2vh solid black;
+  border: 2vh solid ;
   border-radius: 2vh 1vh 1vh 0;
   background: -webkit-radial-gradient(white, white, white, gray)
 }
@@ -33,7 +33,6 @@
 .page-content {
   font-size: medium;
   font-style: italic;
-  color: black;
   height: 60vh;
   width: 30vh;
   border-radius: 5vh;
@@ -45,12 +44,12 @@
   margin-left: 2vh;
   margin-right: 2vh;
   height: 5vh;
-  border: 2vh solid #333333;
+  border: 2vh solid ;
   width: 44vh;
   transform: rotateX(0deg) rotateY(0deg);
   border-radius: 0vh 0vh 5vh 10vh;
-  border-left: 2vh solid #333333;
-  border-bottom: 2vh solid #333333;
+  border-left: 2vh solid;
+  border-bottom: 2vh solid ;
   background: -webkit-linear-gradient(white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181), white, rgb(186, 181, 181));
 }
 
@@ -70,7 +69,6 @@
   margin-top: 12vh;
   display: flex;
   flex-flow: column;
-  
 }
 
 /* 底部功能栏 */
@@ -94,3 +92,36 @@
   display: flex;
   flex-flow: column;
 }
+
+.setting-item{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.slider{
+  width: 20vh;
+}
+
+.setting-item-text{
+  font-size: small;
+    color: gray;
+    margin:auto;
+    margin-left: 2vh;
+}
+
+.color-sample{
+  height: 2vh;
+  width: 2vh;
+ text-align: center;
+ margin: auto;
+ margin-right: 2vh;
+}
+
+.divLine{
+  width: 95%;
+  height: 2.5rpx;
+  height: 2vh;
+ }
+ 
+
