@@ -1,0 +1,49 @@
+/* miniprogram/pages/book/user/user.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: -webkit-linear-gradient(left, pink, lightblue, skyblue);
+  width: 100%;
+  height: 300rpx;
+}
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+  background: -webkit-linear-gradient(right, pink, lightblue, skyblue);
+  border-radius: 20rpx;
+}
+
+.functions{
+  background-color: rgb(243, 241, 240);
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-group {
+  margin-top: 3vh;
+  display: flex;
+  flex-flow: column;
+  padding-left: 5vh;
+  background-color: white;
+}
+
+.item-detail {
+  font-size: 4vh;
+  position: absolute;
+  right: 3vh;
+  height: 5vh;
+  line-height: 5vh;
+  color: #888;
+}
+

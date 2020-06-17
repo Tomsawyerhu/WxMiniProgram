@@ -1,0 +1,26 @@
+<!--miniprogram/pages/book/user/note/writenote/writenote.wxml-->
+<view>
+	<view class="header">
+    <i-icon bindtap="back" type="close" size="28" color="#80848f" />
+    <i-icon bindtap="undo" type="undo" size="28" color="#80848f" />
+    <i-icon bindtap="save" type="lock" size="28" color="#80848f" />
+		<i-icon  bindtap="upload" type="send" size="28" color="#80848f" />
+	</view>
+	<view class="body">
+		<textarea 
+    placeholder="写点东西吧" 
+    maxlength="2000" 
+    auto-focus 
+    adjust-position
+    value="{{text}}" 
+    bindinput="getInput"
+    style="height:70vh">
+  </textarea>
+	</view>
+
+	<view class="footer">
+		<text>字数统计：</text>
+		{{words}}
+	</view>
+
+</view>

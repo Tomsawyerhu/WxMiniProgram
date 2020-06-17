@@ -1,0 +1,71 @@
+<!--miniprogram/pages/book/user/user.wxml-->
+<view >
+	<view class="userinfo">
+		<image bindtap="bindAvatarTap" class="userinfo-avatar" src="img/avatar.jpg" background-size="cover"></image>
+		<text class="userinfo-nickname">nobody</text>
+	</view>
+	<view class="functions">
+		<view class="item-group">
+			<view class="item">
+				<view class="item-title">
+        个人信息
+				</view>
+				<view class="item-detail">
+					<text> ></text>
+				</view>
+			</view>
+      
+		</view>
+
+    <view class="item-group">
+			<view class="item">
+				<view class="item-title">
+        我的消息
+				</view>
+				<view class="item-detail">
+					<text> ></text>
+				</view>
+			</view>
+      <view class="item">
+				<view class="item-title">
+        我的优惠券
+				</view>
+				<view class="item-detail">
+					<text> ></text>
+				</view>
+			</view>
+      <view class="item">
+				<view class="item-title">
+        我的阅读记录
+				</view>
+				<view class="item-detail">
+					<text> ></text>
+				</view>
+			</view>
+			<view class="item">
+				<view class="item-title">
+        我的笔记
+				</view>
+				<view class="item-detail">
+					<i-icon type="brush"  color="black" />
+					<i-icon type="browse_fill"  color="green" style="margin-left:3vh" />
+				</view>
+			</view>
+		</view>
+
+     <view class="item-group">
+			
+      <view class="item">
+				<view class="item-title">
+        关于我们
+				</view>
+				<view class="item-detail">
+					<text> ></text>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+
+</view>

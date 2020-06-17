@@ -1,0 +1,23 @@
+/* miniprogram/pages/book/user/note/writenote/writenote.wxss */
+.header{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content:space-evenly ;
+
+}
+
+.body{
+  margin-left:5vh;
+  margin-right:5vh;
+  margin-top: 10vh;
+  height: 70%;
+  background-color: blanchedalmond;
+}
+
+.footer{
+  height: 5%;
+  position: fixed;
+  bottom: 0;
+  right: 5vh;
+  
+}

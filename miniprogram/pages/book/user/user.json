@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-action-sheet": "../../dist/action-sheet/index",
+    "i-icon": "../../dist/icon/index"
+
+  }
+}

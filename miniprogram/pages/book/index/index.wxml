@@ -1,18 +1,66 @@
 <!--miniprogram/pages/book/index/index.wxml-->
 <view>
 	<i-sticky scrollTop="{{scrollTop}}" class="sticky">
-		<i-sticky-item i-class="i-sticky-demo-title" >
-      <!--首部搜索栏-->
+		<i-sticky-item i-class="i-sticky-demo-title">
+			<!--首部搜索栏-->
 			<view slot="title">
-				<i-icon class="float-right"  type="search" size="20" color="#80848f" />
+
 			</view>
 			<view slot="content">
 				<!--中间部分(可滚动)-->
-				<i-grid wx:for="{{index1}}" wx:for-index="rowindex" >
+				<view>
+					<swiper indicator-dots="true" interval="2000" autoplay="true">
+						<swiper-item>
+							<image src="../../../images/swiper_img1.jpg"></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="../../../images/swiper_img2.jpg"></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="../../../images/swiper_img3.jpg"></image>
+						</swiper-item>
+					</swiper>
+				</view>
+
+				<i-notice-bar icon="systemprompt" loop>
+					更多好书请搜猿读书官网www.aperead.com;
+				</i-notice-bar>
+
+				<view class="search">
+
+					<i-tag class="i-tags" name="单个标签">
+						男生
+					</i-tag>
+					<i-tag class="i-tags" name="单个标签" color="red">
+						女生
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="green">
+						青春
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="blue">
+						武侠
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="yellow">
+						文学
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="#495060">
+						冒险
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="pink">
+						科幻
+					</i-tag>
+					<i-tag class="i-tags" name="标签一" color="yellow">
+						惊悚
+					</i-tag>
+					<i-icon class="float-right" type="search" size="20" color="#80848f" />
+				</view>
+
+
+				<i-grid wx:for="{{index1}}" wx:for-index="rowindex">
 					<i-grid-item wx:for="{{index2}}" wx:for-index="colindex">
-						<book-card a="马尔克斯"  p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独"  wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
+						<book-card a="马尔克斯" p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独" wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
 					</i-grid-item>
-					
+
 				</i-grid>
 			</view>
 		</i-sticky-item>

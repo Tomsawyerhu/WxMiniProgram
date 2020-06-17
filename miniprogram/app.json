@@ -1,9 +1,13 @@
 {
   "pages": [
+    "pages/book/user/note/shownote/shownote",
+    "pages/book/user/note/writenote/writenote",
+    "pages/book/user/user",
+    "pages/book/user/chooseAvatar/chooseAvatar",
+    "pages/book/index/index",
     "pages/book/read/read",
     "pages/book/listen/listen",
     "pages/book/detail/detail",
-    "pages/book/index/index",
     "pages/test/test",
     "pages/index/index",
     "pages/userConsole/userConsole",
@@ -17,6 +21,7 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
     "pages/im/im"
+    
     
   ],
   "window": {

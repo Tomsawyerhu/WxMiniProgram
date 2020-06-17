@@ -1,0 +1,14 @@
+<!--miniprogram/pages/book/user/chooseAvatar/chooseAvatar.wxml-->
+<import src='../../../../plugin/we-cropper/we-cropper.wxml' />
+
+	<view>
+		<template is="we-cropper" data="{{...cropperOpt}}" />
+		<view class="cropper-buttons">
+			<i-icon  bindtap="uploadTap" type="activity" size="40"  >
+				重新选择
+			</i-icon>
+			<i-icon  bindtap="getCropperImage"  type="right" size="40" >
+				确定
+			</i-icon>
+		</view>
+	</view>

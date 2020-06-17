@@ -1,0 +1,9 @@
+/* miniprogram/pages/book/user/chooseAvatar/chooseAvatar.wxss */
+.cropper-buttons{
+  margin-top: 6vh;
+  margin-left: 10vh;
+  margin-right: 10vh;
+  display: flex;
+  flex-flow: row nowrap;
+ justify-content: space-between;
+}

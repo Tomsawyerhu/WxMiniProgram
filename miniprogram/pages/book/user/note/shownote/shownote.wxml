@@ -1,0 +1,53 @@
+<!--miniprogram/pages/book/user/note/shownote/shownote.wxml-->
+<scroll-view scroll-y>
+<view class="shownote">
+	<view class="time-axe">
+		<view class="time-axe-node">
+			<view class="time-axe-circle"></view>
+			<view class="time-axe-line"></view>
+		</view>
+		<view class="time-axe-node">
+			<view class="time-axe-circle"></view>
+			<view class="time-axe-line"></view>
+		</view>
+    	<view class="time-axe-node">
+			<view class="time-axe-circle"></view>
+			<view class="time-axe-line"></view>
+		</view>
+    	<view class="time-axe-node">
+			<view class="time-axe-circle"></view>
+			<view class="time-axe-line"></view>
+		</view>
+    	<view class="time-axe-node">
+			<view class="time-axe-circle"></view>
+			<view class="time-axe-line"></view>
+		</view>
+		<view class="time-axe-circle"></view>
+	</view>
+	<view class="note-records">
+		<view class="note-record">
+			<text>2020.1.1</text>
+      <text>《一个孤独的我》</text>
+      <i-icon type="document_fill" size="28" color="blue" />
+		</view>
+		<view class="note-record">
+			2020.1.2
+
+		</view>
+		<view class="note-record">
+			2020.1.3
+		</view>
+    	<view class="note-record">
+			2020.1.4
+		</view>
+    	<view class="note-record">
+			2020.1.5
+		</view>
+    	<view class="note-record">
+			2020.1.6
+		</view>
+
+	</view>
+</view>
+
+</scroll-view>

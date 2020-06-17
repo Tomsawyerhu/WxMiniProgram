@@ -13,7 +13,11 @@
     "i-sticky": "../../dist/sticky/index",
     "i-sticky-item": "../../dist/sticky-item/index",
     
-    "i-icon": "../../dist/icon/index"
+    "i-icon": "../../dist/icon/index",
+
+    "i-tag": "../../dist/tag/index",
+    "i-notice-bar": "../../dist/notice-bar/index"
+
 
 }
 

@@ -1,0 +1,47 @@
+/* miniprogram/pages/book/user/note/shownote/shownote.wxss */
+.shownote{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.time-axe{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-right: 10vh;
+}
+
+.time-axe-node{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  
+}
+
+.time-axe-circle{
+  height:3vh;
+  width:3vh;
+  border:solid ;
+  border-radius: 2vh;
+  border-color: cadetblue ;
+
+}
+
+.time-axe-line{
+  height:15vh;
+  width: 0.5vh;
+  background: darkblue;
+}
+
+.note-records{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.note-record{
+  height:18.5vh;
+  width:auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
