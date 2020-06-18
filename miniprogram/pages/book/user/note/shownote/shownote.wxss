@@ -45,3 +45,44 @@
   display: flex;
   flex-flow: column nowrap;
 }
+
+.note-example{
+  margin-left: 2vh;
+  margin-right: 2vh;
+}
+
+#title{
+  text-align: center;
+  line-height: 10vh;
+  height: 10vh;
+  font-style: oblique;
+  font-size:5vh ;
+}
+
+#date{
+  text-align: right;
+  margin-right: 8vh;
+  font-style: oblique;
+  font-size:2vh ;
+  margin-bottom: 3vh;
+}
+
+#content{
+  height:70vh;
+  font-style: oblique;
+  font-size:3vh ;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+#content textarea{
+  height:70vh;
+}
+
+#edit{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 5vh;
+}
+

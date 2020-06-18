@@ -1,0 +1,15 @@
+<!--miniprogram/pages/book/user/readingRecord/readingRecord.wxml-->
+<view>
+	<picker mode="date" value="{{date}}" start="2020-06-18" end="2021-06-18" bindchange="bindDateChange" id="timepicker">
+		<view class="picker">
+			{{date}}
+		</view>
+	</picker>
+</view>
+<view class="{{animationType}} record-area " >
+	<i-card class="record"  extra="天气：晴朗" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+		<view slot="content" style="height:60vh;width:50vh;margin-top:5vh;margin-bottom:5vh;word-break:break-all">
+		 {{recordData}}
+		</view>
+	</i-card>
+</view>

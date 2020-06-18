@@ -1,0 +1,19 @@
+/* miniprogram/pages/book/user/readingRecord/readingRecord.wxss */
+#timepicker{
+  right: 5vh;
+  position: fixed;
+}
+
+.record-area{
+  height:70vh;
+  margin-top: 6vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.record{
+  height:70vh;
+  width: 60vh;
+}
+

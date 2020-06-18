@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    text: ' 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错',
+    originText:'',
+    updateDisable: false,
+    saveDisable: true,
+    cancelDisable: true,
+    showExample:false
   },
 
   /**
@@ -62,5 +67,62 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  bindInput:function (e) {
+    this.setData({
+      text:e.detail.value
+    })
+    
+  },
+
+  update: function () {
+    if (!this.data.updateDisable) {
+      this.setData({
+        updateDisable: true,
+        saveDisable: false,
+        cancelDisable: false,
+        originText:this.data.text
+      })
+    }
+
+  },
+
+  save: function () {
+    if (!this.data.saveDisable) {
+      this.setData({
+        updateDisable: false,
+        saveDisable: true,
+        cancelDisable: true
+      })
+      //todo上传数据
+    }
+
+
+  },
+
+  cancel: function () {
+    if (!this.data.cancelDisable) {
+      this.setData({
+        updateDisable: false,
+        saveDisable: true,
+        cancelDisable: true,
+        text:this.data.originText
+      })
+    }
+  },
+
+  back:function () {
+    this.setData({
+      showExample:false
+    })
+  },
+
+  showExample:function () {
+    //todo
+    //请求某篇note数据
+    this.setData({
+      showExample:true
+    })
   }
 })
