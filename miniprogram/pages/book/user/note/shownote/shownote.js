@@ -1,16 +1,20 @@
 // miniprogram/pages/book/user/note/shownote/shownote.js
+import  user from "../../../../../api/user"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text: ' 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错 今天天气不错',
+    title:'',
+    text: '',
+    createDate:'',
     originText:'',
     updateDisable: false,
     saveDisable: true,
     cancelDisable: true,
-    showExample:false
+    showExample:false,
+    noteList:[],
   },
 
   /**
@@ -30,8 +34,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+    let that=this
+    var app = getApp()
+    user.requestNotesAPI('a').then((res) => {
+      that.setData({
+        noteList: res
+      })
+    }).catch((res) => {
+      console.log("错误码：" + res.message)
+      //todo
+    })
   },
 
   /**
@@ -89,6 +102,7 @@ Page({
   },
 
   save: function () {
+    var item = this.data.noteList[this.data.index];
     if (!this.data.saveDisable) {
       this.setData({
         updateDisable: false,
@@ -96,6 +110,19 @@ Page({
         cancelDisable: true
       })
       //todo上传数据
+    user.updateNoteAPI(item.id,this.data.text)
+      let that=this
+       var app = getApp()
+       user.requestNotesAPI('a').then((res) => {
+        that.setData({
+        noteList: res
+      })
+    }).catch((res) => {
+      console.log("错误码：" + res.message)
+      //todo
+    })
+   
+      
     }
 
 
@@ -118,11 +145,17 @@ Page({
     })
   },
 
-  showExample:function () {
+  showExample:function (e) {
     //todo
     //请求某篇note数据
+    var Index = parseInt(e.currentTarget.dataset.index);
+    var item = this.data.noteList[Index];
     this.setData({
-      showExample:true
+      showExample:true,
+      index:Index,
+      title: item.title,
+      text: item.noteContent,
+      createDate: item.createDate,
     })
   }
 })

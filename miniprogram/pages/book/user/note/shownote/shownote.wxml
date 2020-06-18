@@ -2,57 +2,31 @@
 <scroll-view scroll-y>
 	<view class="shownote" wx-if="{{!showExample}}">
 		<view class="time-axe">
+			<view wx:for="{{noteList}}">
 			<view class="time-axe-node">
 				<view class="time-axe-circle"></view>
 				<view class="time-axe-line"></view>
 			</view>
-			<view class="time-axe-node">
-				<view class="time-axe-circle"></view>
-				<view class="time-axe-line"></view>
-			</view>
-			<view class="time-axe-node">
-				<view class="time-axe-circle"></view>
-				<view class="time-axe-line"></view>
-			</view>
-			<view class="time-axe-node">
-				<view class="time-axe-circle"></view>
-				<view class="time-axe-line"></view>
-			</view>
-			<view class="time-axe-node">
-				<view class="time-axe-circle"></view>
-				<view class="time-axe-line"></view>
-			</view>
+				</view>
 			<view class="time-axe-circle"></view>
 		</view>
+		
 		<view class="note-records">
+		<view wx:for="{{noteList}}" data-index='{{index}}' >
 			<view class="note-record">
-				<text>2020.1.1</text>
-				<text>《一个孤独的我》</text>
-				<i-icon bindtap="showExample" type="document_fill" size="28" color="blue" />
+				<text>{{item.createDate}}</text>
+				<text>{{item.title}}</text>
+				<i-icon bindtap="showExample" data-index='{{index}}'  type="document_fill" size="28" color="blue" />
 			</view>
-			<view class="note-record">
-				2020.1.2
+			</view>
 
-			</view>
-			<view class="note-record">
-				2020.1.3
-			</view>
-			<view class="note-record">
-				2020.1.4
-			</view>
-			<view class="note-record">
-				2020.1.5
-			</view>
-			<view class="note-record">
-				2020.1.6
-			</view>
 
 		</view>
 	</view>
 </scroll-view>
 <view class="note-example"  wx-if="{{showExample}}">
-	<view id="title">Title</view>
-	<view id="date">2020.6.18</view>
+	<view id="title">{{title}}</view>
+	<view id="date">{{createDate}}</view>
 	<scroll-view scroll-y>
 		<view id="content">
 			<textarea disabled="{{!updateDisable}}" value="{{text}}" maxlength="2000" bindinput="bindInput">
@@ -62,7 +36,7 @@
 
 <view id="edit">
  <button bindtap="update" style="color:{{updateDisable?'grey':'black'}}" >修改</button>
- <button bindtap="save" style="color:{{saveDisable?'grey':'black'}}" >保存</button>
+ <button bindtap="save"  style="color:{{saveDisable?'grey':'black'}}" >保存</button>
  <button bindtap="cancel" style="color:{{cancelDisable?'grey':'black'}}" >取消</button>
  <button bindtap="back" >返回</button>
 </view>
