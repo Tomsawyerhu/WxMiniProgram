@@ -1,0 +1,56 @@
+<!--miniprogram/pages/book/shelf/shelf.wxml-->
+<view class="shelf">
+<view class="ape-emoji" >
+<image bindtap="changeEmoji" class="animated {{emojiAnimation}} " src="{{emoji}}" style="width:8vh;height:8vh"></image>
+</view>
+<view class="books-area">
+	<i-grid >
+		<i-grid-item>
+			<view style="height:20vh" class="book">
+      <image src="./img/ape1.jpg" style="height:15vh;width:10vh"></image>
+      <text style="font-size:x-small;margin-top:3vh">书名</text>
+       <text style="font-size:x-small;margin-top:1vh">阅读进度</text>
+      
+      </view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+	</i-grid>
+
+	<i-grid>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+	</i-grid>
+  
+	<i-grid>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+		<i-grid-item>
+			<view style="height:20vh"></view>
+		</i-grid-item>
+	</i-grid>
+  </view>
+
+	<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
+		<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+		<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
+		<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+		<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+	</i-tab-bar>
+
+</view>
