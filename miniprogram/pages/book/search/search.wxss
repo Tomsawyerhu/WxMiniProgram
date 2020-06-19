@@ -1,0 +1,14 @@
+/* miniprogram/pages/book/search/search.wxss */
+.search-area{
+  margin-left: 3vh;
+}
+
+.title{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.search-words{
+  font-size: small;
+  color:grey;
+}

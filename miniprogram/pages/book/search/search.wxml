@@ -1,0 +1,25 @@
+<!--miniprogram/pages/book/search/search.wxml-->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+<view style="height:3vh"></view>
+<view class="search-area" style="height:40vh">
+	<view class="title">
+	  搜索热词
+		<van-tag round type="danger" size="small">HOT</van-tag>
+	</view>
+	<view style="height:3vh"></view>
+	<van-row class="search-words">
+		<van-col span="8">span: 8</van-col>
+		<van-col span="8">span: 8</van-col>
+		<van-col span="8">span: 8</van-col>
+	</van-row>
+
+</view>
+<view class="search-area">
+	<view class="title">最近搜索</view>
+	<view style="height:3vh"></view>
+	<van-row class="search-words">
+		<van-col span="8">span: 8</van-col>
+		<van-col span="8">span: 8</van-col>
+		<van-col span="8">span: 8</van-col>
+	</van-row>
+</view>
