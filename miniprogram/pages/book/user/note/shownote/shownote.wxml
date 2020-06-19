@@ -1,14 +1,17 @@
 <!--miniprogram/pages/book/user/note/shownote/shownote.wxml-->
 <scroll-view scroll-y>
 	<view class="shownote" wx-if="{{!showExample}}">
+
 		<view class="time-axe">
+			<view class="time-axe-circle"></view>
 			<view wx:for="{{noteList}}">
 			<view class="time-axe-node">
-				<view class="time-axe-circle"></view>
 				<view class="time-axe-line"></view>
+				<view class="time-axe-circle"></view>
+			
 			</view>
 				</view>
-			<view class="time-axe-circle"></view>
+			
 		</view>
 		
 		<view class="note-records">
@@ -16,8 +19,12 @@
 			<view class="note-record">
 				<text>{{item.createDate}}</text>
 				<text>{{item.title}}</text>
-				<i-icon bindtap="showExample" data-index='{{index}}'  type="document_fill" size="28" color="blue" />
+				<view>
+				<i-icon bindtap="showExample" wx-if='{{showDisable}}' data-index='{{index}}'  type="document_fill" size="28" color="blue" />
+					<button bindtap="delete" wx-if='{{showDisable}}' data-index='{{index}}' size="mini"  >删除</button>
+					</view>
 			</view>
+		
 			</view>
 
 

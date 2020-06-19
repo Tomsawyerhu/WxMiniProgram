@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/book/user/user",
-    "pages/book/user/readingRecord/readingRecord",
-    
     "pages/book/user/note/shownote/shownote",
     "pages/book/user/note/writenote/writenote",
+  
+    "pages/book/user/user",
+    "pages/book/user/readingRecord/readingRecord",
     "pages/book/user/chooseAvatar/chooseAvatar",
     "pages/book/index/index",
     "pages/book/read/read",
