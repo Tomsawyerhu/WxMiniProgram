@@ -16,7 +16,9 @@ App({
     }
 
     this.globalData = {
-      noteCache:''
+      noteCache:'',
+      noteTitleCache:'',
+      openId:'a',
     }
 
   },

@@ -58,7 +58,28 @@ const deleteNoteAPI = function (id) {
   })
 
 }
+const addNoteAPI = function (openId,title,noteContent) {
+  return new Promise(function ( resolve,reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/note/addNote?openId='+openId+'&title='+title+'&noteContent='+noteContent, //添加笔记
+      method:"GET",
+      //headers: {
+       // 'Content-Type': 'application/json'
+      //},
+      success: function (res) { 
+        let result=res.data.content
+        console.log(res)
+        resolve(result)
+      }, 
+      fail: function (res) {
+        reject(res.data.message)//带上错误信息
+      }
+    })
+  })
+
+}
 export default {requestNotesAPI,
   updateNoteAPI,
   deleteNoteAPI,
+  addNoteAPI,
 }

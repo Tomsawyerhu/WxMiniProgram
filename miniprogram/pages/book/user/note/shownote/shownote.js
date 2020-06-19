@@ -38,7 +38,7 @@ Page({
   onShow: function (options) {
     let that=this
     var app = getApp()
-    user.requestNotesAPI('a').then((res) => {
+    user.requestNotesAPI(app.globalData.openId).then((res) => {
      
       that.setData({
         noteList: res
@@ -127,7 +127,7 @@ Page({
     user.updateNoteAPI(item.id,this.data.text)
       let that=this
        var app = getApp()
-       user.requestNotesAPI('a').then((res) => {
+       user.requestNotesAPI(app.globalData.openId).then((res) => {
         that.setData({
         noteList: res
       })
@@ -165,11 +165,25 @@ Page({
     })
   },
   delete: function(e){
-    var Index = parseInt(e.currentTarget.dataset.index);
-    var item = this.data.noteList[Index];
-     user.deleteNoteAPI(item.id).then((res)=>{
-        this.onShow()
-     })
+    var self=this
+    wx.showModal({
+      content: "确定要删除吗",
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success: function (res) {
+        if (res.confirm) {
+          var Index = parseInt(e.currentTarget.dataset.index);
+          var item = self.data.noteList[Index];
+           user.deleteNoteAPI(item.id).then((res)=>{
+              self.onShow()
+           })
+        }
+      }
+    })
+   
   },
   showExample:function (e) {
     //todo
