@@ -10,6 +10,7 @@ Page({
     text: '',
     createDate:'',
     originText:'',
+    showDisable:true,
     updateDisable: false,
     saveDisable: true,
     cancelDisable: true,
@@ -37,10 +38,21 @@ Page({
   onShow: function (options) {
     let that=this
     var app = getApp()
-    user.requestNotesAPI('a').then((res) => {
+    user.requestNotesAPI(app.globalData.openId).then((res) => {
+     
       that.setData({
         noteList: res
       })
+      if(this.data.noteList.length==0){
+     that.setData({
+       noteList:  [{
+        createDate:'',
+        title: '你还没有笔记',
+        noteContent:'你还没有笔记',
+      }],
+      showDisable:false,
+     })
+    }
     }).catch((res) => {
       console.log("错误码：" + res.message)
       //todo
@@ -83,9 +95,11 @@ Page({
   },
 
   bindInput:function (e) {
+    
     this.setData({
       text:e.detail.value
     })
+  
     
   },
 
@@ -113,16 +127,22 @@ Page({
     user.updateNoteAPI(item.id,this.data.text)
       let that=this
        var app = getApp()
-       user.requestNotesAPI('a').then((res) => {
+       user.requestNotesAPI(app.globalData.openId).then((res) => {
         that.setData({
         noteList: res
       })
+      var item = this.data.noteList[this.data.index];
+    console.log(item)
+    this.setData({
+      title: item.title,
+      text: item.noteContent,
+      createDate: item.createDate,
+    })
     }).catch((res) => {
       console.log("错误码：" + res.message)
       //todo
     })
-   
-      
+    
     }
 
 
@@ -144,12 +164,34 @@ Page({
       showExample:false
     })
   },
-
+  delete: function(e){
+    var self=this
+    wx.showModal({
+      content: "确定要删除吗",
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success: function (res) {
+        if (res.confirm) {
+          var Index = parseInt(e.currentTarget.dataset.index);
+          var item = self.data.noteList[Index];
+           user.deleteNoteAPI(item.id).then((res)=>{
+              self.onShow()
+           })
+        }
+      }
+    })
+   
+  },
   showExample:function (e) {
     //todo
     //请求某篇note数据
+    
     var Index = parseInt(e.currentTarget.dataset.index);
     var item = this.data.noteList[Index];
+    if(item.createDate!=''){
     this.setData({
       showExample:true,
       index:Index,
@@ -158,4 +200,5 @@ Page({
       createDate: item.createDate,
     })
   }
+}
 })

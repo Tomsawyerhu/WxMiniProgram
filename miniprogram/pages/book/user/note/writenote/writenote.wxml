@@ -7,13 +7,24 @@
 		<i-icon  bindtap="upload" type="send" size="28" color="#80848f" />
 	</view>
 	<view class="body">
+  <textarea 
+    placeholder="请输入你的标题" 
+    maxlength="2000" 
+    auto-focus 
+    adjust-position
+    value="{{title}}" 
+    bindinput="titlegetInput"
+    style="height:5vh">
+  </textarea>
+  	</view>
+	<view class="body">
 		<textarea 
     placeholder="写点东西吧" 
     maxlength="2000" 
     auto-focus 
     adjust-position
     value="{{text}}" 
-    bindinput="getInput"
+    bindinput="textgetInput"
     style="height:70vh">
   </textarea>
 	</view>

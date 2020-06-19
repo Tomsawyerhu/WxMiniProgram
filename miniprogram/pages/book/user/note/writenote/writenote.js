@@ -1,4 +1,5 @@
 // miniprogram/pages/book/user/note/writenote/writenote.js
+import  user from "../../../../../api/user"
 Page({
 
   /**
@@ -6,7 +7,10 @@ Page({
    */
   data: {
     words:0,
-    text:''
+    text:'',
+    title:'',
+    textcache:'',
+    titlecache:'',
   },
 
   /**
@@ -28,10 +32,10 @@ Page({
    */
   onShow: function () {
     var app=getApp()
-    let cache=app.globalData.noteCache
-    if(cache.length>0){
+    if(app.globalData.noteCache.length>0){
       this.setData({
-        value:cache
+        text:app.globalData.noteCache,
+        title: app.globalData.noteTitleCache
       })
     }
 
@@ -72,38 +76,64 @@ Page({
 
   },
 
-  getInput:function (value) {
+  textgetInput:function (value) {
     console.log(value)
     this.setData({
+      textcache:value.detail.value,
       words:value['detail']['value'].length
+    })
+  },
+  titlegetInput:function (value) {
+    console.log(value)
+    this.setData({
+      titlecache:value.detail.value,
     })
   },
 
   save:function(){
     //保存到全局变量
     var app=getApp()
-    app.globalData.noteCache=this.data.value
+    app.globalData.noteCache=this.data.textcache
+    app.globalData.noteTitleCache=this.data.titlecache
+    console.log(app.globalData.noteCache)
   },
 
   upload:function (params) {
     //清空全局变量
     var app=getApp()
     app.globalData.noteCache=''
+    app.globalData.noteTitleCache=''
+    user.addNoteAPI(app.globalData.openId,this.data.titlecache,this.data.textcache)
+    this.setData({
+      text:'',
+      title:'',
+      textcache:'',
+      titlecache:'',
+      words:0
+    })
     //保存到后端 
     //todo
   },
 
   undo:function () {
     this.setData({
-      text:''
+      text:'',
+      title:'',
+      textcache:'',
+      titlecache:'',
+      words:0
     }) 
   },
 
   back:function () {
     wx.showModal({
-      title: '',
       content: '确定结束编辑吗？记得保存哦',
-      success (res) {
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success :function  (res) {
         if (res.confirm) {
           wx.navigateBack()
         } else if (res.cancel) {
@@ -111,7 +141,5 @@ Page({
         }
       }
     })
-   
-    
   }
 })
