@@ -54,16 +54,7 @@
 }
 
 
-.mask{
-  margin-top: 0;
-}
-.directory-area {
-  background: -webkit-linear-gradient(gray, rgba(0, 0, 0, 0.5));
-  height: 30vh;
-  width: 20vh;
-  border-radius: 1vh;
-  border-style: groove;
-}
+
 
 .function-bar{
   margin-top: 12vh;

@@ -2,22 +2,18 @@
 <view>
 	<i-sticky scrollTop="{{scrollTop}}" class="sticky">
 		<i-sticky-item i-class="i-sticky-demo-title">
-			<!--首部搜索栏-->
-			<view slot="title">
-
-			</view>
 			<view slot="content">
 				<!--中间部分(可滚动)-->
 				<view>
 					<swiper indicator-dots="true" interval="2000" autoplay="true">
 						<swiper-item>
-							<image src="../../../images/swiper_img1.jpg"></image>
+							<image src="../../../images/swiper_img1.jpg" style="width:100%"></image>
 						</swiper-item>
 						<swiper-item>
-							<image src="../../../images/swiper_img2.jpg"></image>
+							<image src="../../../images/swiper_img2.jpg" style="width:100%"></image>
 						</swiper-item>
 						<swiper-item>
-							<image src="../../../images/swiper_img3.jpg"></image>
+							<image src="../../../images/swiper_img3.jpg" style="width:100%"></image>
 						</swiper-item>
 					</swiper>
 				</view>
@@ -25,52 +21,75 @@
 				<i-notice-bar icon="systemprompt" loop>
 					更多好书请搜猿读书官网www.aperead.com;
 				</i-notice-bar>
+				<van-tabs active="a">
+					<van-tab title="书城搜搜" name="a">
+						<view class="search">
+							<i-tag class="i-tags" name="单个标签">
+								男生
+							</i-tag>
+							<i-tag class="i-tags" name="单个标签" color="red">
+								女生
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="green">
+								青春
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="blue">
+								武侠
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="yellow">
+								文学
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="#495060">
+								冒险
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="pink">
+								科幻
+							</i-tag>
+							<i-tag class="i-tags" name="标签一" color="yellow">
+								惊悚
+							</i-tag>
+							<i-icon class="float-right" type="search" size="20" color="#80848f" />
+						</view>
 
-				<view class="search">
 
-					<i-tag class="i-tags" name="单个标签">
-						男生
-					</i-tag>
-					<i-tag class="i-tags" name="单个标签" color="red">
-						女生
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="green">
-						青春
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="blue">
-						武侠
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="yellow">
-						文学
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="#495060">
-						冒险
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="pink">
-						科幻
-					</i-tag>
-					<i-tag class="i-tags" name="标签一" color="yellow">
-						惊悚
-					</i-tag>
-					<i-icon class="float-right" type="search" size="20" color="#80848f" />
-				</view>
+						<i-grid wx:for="{{index1}}" wx:for-index="rowindex">
+							<i-grid-item wx:for="{{index2}}" wx:for-index="colindex">
+								<book-card a="马尔克斯" p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独" wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
+							</i-grid-item>
 
+						</i-grid>
+					</van-tab>
+					<van-tab title="每日推荐" name="b">
+						<scroll-view scroll-y>
+						<view style="height:5vh"></view>
+							<van-card wx:for="{{dailyRecommend}}" wx:for-index="recoindex" tag="每日推荐" desc="描述信息" title="书名" thumb="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" >
+								<view slot="tags">
+									<van-tag size="medium" type="primary">文学</van-tag>
+									<van-tag size="medium" type="primary">经典</van-tag>
+								
+								</view>
+								<view slot="footer">
+									<van-tag plain size="medium" type="primary">分享</van-tag>
+									<van-tag plain size="medium" color="#f2826a">收藏</van-tag>
+								</view>
+							</van-card>
+							<view style="height:20vh"></view>
+						</scroll-view>
+					</van-tab>
 
-				<i-grid wx:for="{{index1}}" wx:for-index="rowindex">
-					<i-grid-item wx:for="{{index2}}" wx:for-index="colindex">
-						<book-card a="马尔克斯" p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独" wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
-					</i-grid-item>
+					<van-tab title="劲爆活动" name="c">暂无活动</van-tab>
 
-				</i-grid>
+				</van-tabs>
 			</view>
 		</i-sticky-item>
 	</i-sticky>
 
-	<!--底部标签栏-->
-	<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
-		<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
-		<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
-		<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
-		<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
-	</i-tab-bar>
+
 </view>
+<!--底部标签栏-->
+<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
+	<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+	<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
+	<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+	<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+</i-tab-bar>

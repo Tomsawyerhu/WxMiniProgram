@@ -16,7 +16,15 @@
     "i-icon": "../../dist/icon/index",
 
     "i-tag": "../../dist/tag/index",
-    "i-notice-bar": "../../dist/notice-bar/index"
+    "i-notice-bar": "../../dist/notice-bar/index",
+
+    "van-tab":"../../../vant/tab/index",
+    "van-tabs":"../../../vant/tabs/index",
+    "van-card":"../../../vant/card/index",
+    "van-tag":"../../../vant/tag/index"
+  
+
+
 
 
 }

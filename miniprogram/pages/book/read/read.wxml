@@ -21,12 +21,11 @@
 	</view>
 </i-modal>
 
-<i-drawer mode="left" visible="{{showDirectory}}" bind:close="toggleLeft" class="mask" mask="{{false}}" hidden="{{ showSettings }}">
-	<view class="directory-area">
+<van-popup closeable
+  close-icon-position="top-right"
+  position="left" show="{{showDirectory}}" bind:close="toggleLeft" hidden="{{showSettings}}">
 		<book-dir bookname="百年孤独" charpternum="100" author="马尔克斯" class="directory"></book-dir>
-		<i-icon type="narrow" size="28" color="#80848f" />
-	</view>
-</i-drawer>
+</van-popup>
 
 <view class="perspective" hidden="{{ showSettings }}">
 	<view class="book-wrap">

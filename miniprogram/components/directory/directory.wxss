@@ -2,6 +2,8 @@
 .layout_vertical{
   display:flex;
   flex-flow: column;
+  height:100%;
+  width:50vh;
 }
 .horizon_center{
   text-align: center;
@@ -9,27 +11,17 @@
 }
 #book_name{
   font-weight: bolder;
-  font-size:2vh;
+  font-size:5vh;
 }
 #author{
-  font-size: 1vh;
+  font-size: 3vh;
   color: silver;
   margin-top: 0.5vh;
 }
-.scroll{
-  height:20vh
-}
 .charpter{
   margin-left: 3vh;
-  margin-bottom:1vh;
-  font-size: small;
+  font-size: medium;
   color: darkgray;
 }
 
-.divLine{
-  background: #E0E3DA;
-  width: 92%;
-  height: 2.5rpx;
-  align-self: center;
- }
  

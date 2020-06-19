@@ -20,7 +20,9 @@ Page({
     //收藏链接
     shelf:function (event) {
       console.log("收藏")
-    }
+    },
+    dailyRecommend:['文学','历史','科技','小说']
+
 
 },
 
