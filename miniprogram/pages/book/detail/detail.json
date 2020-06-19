@@ -6,7 +6,14 @@
     "i-rate": "../../dist/rate/index",
 
     "i-collapse": "../../dist/collapse/index",
-    "i-collapse-item": "../../dist/collapse-item/index"
+    "i-collapse-item": "../../dist/collapse-item/index",
+    "i-modal": "../../dist/modal/index",
+    "i-radio-group": "../../dist/radio-group/index",
+    "i-radio": "../../dist/radio/index",
+    "i-panel": "../../dist/panel/index"
+
+
+
 
 
   }

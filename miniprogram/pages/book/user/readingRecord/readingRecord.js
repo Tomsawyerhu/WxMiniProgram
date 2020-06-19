@@ -96,16 +96,18 @@ Page({
       animationType:'animated '+animateData['Bouncing Entrances'][2],
     })
   }
-    
-    var pro=this.sleep(1000)
+    var pro=sleep(1000)
     pro.then(f)
-   
-
-    
   },
 
-  sleep:function(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
+ 
    
 })
+
+const sleep=t=> {
+  return new Promise((resolve) => setTimeout(resolve, t));
+}
+
+module.exports={
+  sleep:sleep
+}

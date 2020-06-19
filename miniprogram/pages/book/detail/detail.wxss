@@ -16,3 +16,15 @@
   right: 20px;
   bottom: 10px;
 }
+
+#comment-rate{
+  margin-top:5vh;
+  line-height: 3vh;
+  height: 3vh;
+}
+
+#comment-choices{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

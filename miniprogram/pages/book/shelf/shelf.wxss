@@ -1,0 +1,17 @@
+/* miniprogram/pages/book/shelf/shelf.wxss */
+.books-area{
+  margin-left: 2vh;
+  margin-right:2vh;
+}
+
+.ape-emoji{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.book{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
