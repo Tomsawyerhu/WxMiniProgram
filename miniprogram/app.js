@@ -19,6 +19,7 @@ App({
       noteCache:'',
       noteTitleCache:'',
       openId:'a',
+      userInfo:{}
     }
 
   },

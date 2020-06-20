@@ -1,18 +1,16 @@
 {
   "pages": [
+    "pages/book/login/login",
     "pages/book/index/index",
     "pages/book/search/search",
     "pages/book/user/note/shownote/shownote",
     "pages/book/user/readingRecord/readingRecord",
     "pages/book/read/read",
     "pages/book/user/note/writenote/writenote",
-   
- 
     "pages/book/detail/detail",
     "pages/book/shelf/shelf",
     "pages/book/user/user",
-    
-    "pages/book/user/chooseAvatar/chooseAvatar", 
+    "pages/book/user/chooseAvatar/chooseAvatar",
     "pages/book/listen/listen"
     
   ],
