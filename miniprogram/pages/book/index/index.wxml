@@ -48,7 +48,7 @@
 							<i-tag class="i-tags" name="标签一" color="yellow">
 								惊悚
 							</i-tag>
-							<i-icon class="float-right" type="search" size="20" color="#80848f" />
+							<i-icon class="float-right" bindtap="startSearch" type="search" size="20" color="#80848f" />
 						</view>
 
 

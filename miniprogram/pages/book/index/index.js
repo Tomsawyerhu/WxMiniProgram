@@ -98,5 +98,12 @@ onPageScroll(event){
    */
   onShareAppMessage: function () {
 
+  },
+
+  startSearch:function () {
+    wx.navigateTo({
+      url: '../search/search',
+    })
+    
   }
 })
