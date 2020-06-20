@@ -1,25 +1,31 @@
 <!--miniprogram/pages/book/search/search.wxml-->
-<van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+<van-search value="{{ searchValue }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
 <view style="height:3vh"></view>
 <view class="search-area" style="height:40vh">
 	<view class="title">
-	  搜索热词
+		搜索热词
 		<van-tag round type="danger" size="small">HOT</van-tag>
 	</view>
 	<view style="height:3vh"></view>
-	<van-row class="search-words">
-		<van-col span="8">span: 8</van-col>
-		<van-col span="8">span: 8</van-col>
-		<van-col span="8">span: 8</van-col>
+	<van-row class="search-words" wx:for="{{hotWordsSplit}}" wx:for-index="rowIndex">
+		<van-col span="{{hotWordsSplit[rowIndex][colIndex][1]}}" wx:for="{{hotWordsSplit[rowIndex]}}" wx:for-index="colIndex" bindtap="tapHotWord" data-value="{{hotWordsSplit[rowIndex][colIndex][0]}}">
+			{{hotWordsSplit[rowIndex][colIndex][0]}}
+		</van-col>
 	</van-row>
 
 </view>
 <view class="search-area">
 	<view class="title">最近搜索</view>
 	<view style="height:3vh"></view>
-	<van-row class="search-words">
-		<van-col span="8">span: 8</van-col>
-		<van-col span="8">span: 8</van-col>
-		<van-col span="8">span: 8</van-col>
+	<van-row class="search-words" wx:for="{{latelyUsedWords.length%3==0?latelyUsedWords.length/3:latelyUsedWords.length/3+1}}">
+		<van-col span="8" wx-if="{{index*3<latelyUsedWords.length}}">
+			<van-tag 	bindtap="tapKeyWord" data-index="{{index*3}}" color="{{colors[(index*3)%7]}}">{{latelyUsedWords[index*3]}}</van-tag>
+		</van-col>
+		<van-col span="8" wx-if="{{index*3+1<latelyUsedWords.length}}">
+			<van-tag 	bindtap="tapKeyWord" data-index="{{index*3+1}}" color="{{colors[(index*3+2)%7]}}">{{latelyUsedWords[index*3+1]}}</van-tag>
+		</van-col>
+		<van-col span="8" wx-if="{{index*3+2<latelyUsedWords.length}}">
+			<van-tag 	bindtap="tapKeyWord" data-index="{{index*3+2}}" color="{{colors[(index*3+4)%7]}}">{{latelyUsedWords[index*3+2]}}</van-tag>
+		</van-col>
 	</van-row>
 </view>
