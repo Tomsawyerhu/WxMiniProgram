@@ -69,6 +69,18 @@ Page({
 
   },
 
+  handleChange({ detail }) {
+    if (detail.key == 'homepage') {
+      wx.navigateTo({
+        url: '../../book/index/index.js',
+      })
+    }else if(detail.key == 'mine'){
+      wx.navigateTo({
+        url: '../../book/user/user',
+      })
+    }
+  },
+
   changeEmoji:function () {
     let random=Math.floor(Math.random()*6);
     this.setData({
@@ -87,6 +99,12 @@ Page({
         emojiAnimation:enterAction[random2]
       })
     })
+  },
+
+  showBookInfo:function () {
+   wx.navigateTo({
+     url: '../../book/detail/detail',
+   }) 
   },
 
   sleep:function(t) {

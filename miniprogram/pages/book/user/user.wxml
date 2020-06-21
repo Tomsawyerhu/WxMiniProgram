@@ -34,8 +34,8 @@
 					<text> ></text>
 				</view>
 			</view>
-      <view class="item">
-				<view class="item-title">
+      <view class="item" bindtap="jumpToReadingRecord">
+				<view class="item-title" >
         我的阅读记录
 				</view>
 				<view class="item-detail">
@@ -47,15 +47,15 @@
         我的笔记
 				</view>
 				<view class="item-detail">
-					<i-icon type="brush"  color="black" />
-					<i-icon type="browse_fill"  color="green" style="margin-left:3vh" />
+					<i-icon type="brush"  color="black" bindtap="jumpToWriteNote"/>
+					<i-icon type="browse_fill"  color="green" style="margin-left:3vh"  bindtap="jumpToShowNote" />
 				</view>
 			</view>
 		</view>
 
      <view class="item-group">
 			
-      <view class="item">
+      <view class="item" bindtap="jumpToAboutUs">
 				<view class="item-title">
         关于我们
 				</view>
@@ -69,3 +69,11 @@
 
 
 </view>
+
+<!--底部标签栏-->
+<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
+	<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+	<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
+	<i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+	<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+</i-tab-bar>

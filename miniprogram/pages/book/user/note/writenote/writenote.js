@@ -1,16 +1,16 @@
 // miniprogram/pages/book/user/note/writenote/writenote.js
-import  user from "../../../../../api/user"
+import user from "../../../../../api/user"
+import Notify from '../../../../../vant/notify/notify'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    words:0,
-    text:'',
-    title:'',
-    textcache:'',
-    titlecache:'',
+    word:0,
+    text: '',
+    title: '',
+    textStyle: { maxHeight: wx.getSystemInfoSync().windowHeight / 3 * 2, minHeight: wx.getSystemInfoSync().windowHeight / 2 }
   },
 
   /**
@@ -31,10 +31,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var app=getApp()
-    if(app.globalData.noteCache.length>0){
+    var app = getApp()
+    if (app.globalData.noteCache.length > 0) {
       this.setData({
-        text:app.globalData.noteCache,
+        text: app.globalData.noteCache,
         title: app.globalData.noteTitleCache
       })
     }
@@ -76,56 +76,66 @@ Page({
 
   },
 
-  textgetInput:function (value) {
-    console.log(value)
+  textgetInput: function (e) {
+    console.log(e)
     this.setData({
-      textcache:value.detail.value,
-      words:value['detail']['value'].length
+      text: e.detail,
+      word:e.detail.length
     })
   },
-  titlegetInput:function (value) {
-    console.log(value)
+  titlegetInput: function (e) {
+    console.log(e)
     this.setData({
-      titlecache:value.detail.value,
+      title: e.detail,
     })
   },
 
-  save:function(){
+  save: function () {
     //保存到全局变量
-    var app=getApp()
-    app.globalData.noteCache=this.data.textcache
-    app.globalData.noteTitleCache=this.data.titlecache
-    console.log(app.globalData.noteCache)
+    var app = getApp()
+    app.globalData.noteCache = this.data.text
+    app.globalData.noteTitleCache = this.data.title
+    
+    Notify({ type: 'success', message: '暂存成功' });
   },
 
-  upload:function (params) {
-    //清空全局变量
-    var app=getApp()
-    app.globalData.noteCache=''
-    app.globalData.noteTitleCache=''
-    user.addNoteAPI(app.globalData.openId,this.data.titlecache,this.data.textcache)
-    this.setData({
-      text:'',
-      title:'',
-      textcache:'',
-      titlecache:'',
-      words:0
+  upload: function (params) {
+    wx.showModal({
+      content: '确定上传吗',
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success: function (res) {
+        if (res.confirm) {
+          //清空全局变量
+          var app = getApp()
+          app.globalData.noteCache = ''
+          app.globalData.noteTitleCache = ''
+          user.addNoteAPI(app.globalData.openId, this.data.title, this.data.text)
+          this.setData({
+            text: '',
+            title: '',
+            word: 0
+          })
+        } else if (res.cancel) {
+        }
+      }
     })
-    //保存到后端 
-    //todo
+
+
   },
 
-  undo:function () {
+  undo: function () {
     this.setData({
-      text:'',
-      title:'',
-      textcache:'',
-      titlecache:'',
-      words:0
-    }) 
+      text: '',
+      title: '',
+      word: 0
+    })
   },
 
-  back:function () {
+  back: function () {
     wx.showModal({
       content: '确定结束编辑吗？记得保存哦',
       showCancel: true,
@@ -133,11 +143,11 @@ Page({
       cancelColor: "#000",
       confirmText: "确定",
       confirmColor: "#0f0",
-      success :function  (res) {
+      success: function (res) {
         if (res.confirm) {
           wx.navigateBack()
         } else if (res.cancel) {
-          
+
         }
       }
     })

@@ -1,7 +1,12 @@
 {
   "usingComponents": {
     "i-progress": "../../dist/progress/index",
-    "i-icon": "../../dist/icon/index"
+    "i-icon": "../../dist/icon/index",
+    "van-popup": "../../../vant/popup/index",
+    "van-swipe-cell": "../../../vant/swipe-cell/index",
+    "van-cell": "../../../vant/cell/index",
+    "van-cell-group": "../../../vant/cell-group/index",
+    "van-tag": "../../../vant/tag/index"
 
   }
 }

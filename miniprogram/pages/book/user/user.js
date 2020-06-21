@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    current:'mine'
 
   },
 
@@ -64,6 +65,18 @@ Page({
 
   },
 
+  handleChange({ detail }) {
+    if (detail.key == 'homepage') {
+      wx.navigateTo({
+        url: '../../book/index/index.js',
+      })
+    }else if(detail.key == 'shelf'){
+      wx.navigateTo({
+        url: '../../book/shelf/shelf',
+      })
+    }
+  },
+
   bindAvatarTap:function () {
     var _this = this
     var src=''
@@ -87,6 +100,30 @@ Page({
     })
 
   },
+
+  jumpToWriteNote:function () {
+    wx.navigateTo({
+      url: '../../book/user/note/writenote/writenote',
+    })
+  },
+
+  jumpToShowNote:function () {
+    wx.navigateTo({
+      url: '../../book/user/note/shownote/shownote',
+    })
+  },
+
+  jumpToReadingRecord:function () {
+    wx.navigateTo({
+      url: '../../book/user/readingRecord/readingRecord',
+    })
+  },
+
+  jumpToAboutUs:function () {
+    wx.navigateTo({
+      url: '../../book/user/aboutUs/aboutUs',
+    })
+  }
 
 
 

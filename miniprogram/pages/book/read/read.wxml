@@ -1,5 +1,5 @@
 <!--pages/book/read/read.wxml-->
-<i-modal visible="{{ showSettings }}" bind:ok="handleSettingOk" bind:cancel="handleSettingCancel">
+<modal hidden="{{! showSettings }}" bindconfirm="handleSettingOk" bindcancel="handleSettingCancel">
 	<view>
 		<view class="setting-item">
 			<view class="setting-item-text">字体颜色</view>
@@ -19,13 +19,15 @@
 			</switch>
 		</view>
 	</view>
-</i-modal>
+</modal>
 
 <van-popup closeable
   close-icon-position="top-right"
-  position="left" show="{{showDirectory}}" bind:close="toggleLeft" hidden="{{showSettings}}">
+  position="left" show="{{showDirectory}}" bind:close="toggleLeft" hidden="{{showSettings}}" customStyle="width:80%;z-index=100">
 		<book-dir bookname="百年孤独" charpternum="100" author="马尔克斯" class="directory"></book-dir>
 </van-popup>
+
+
 
 <view class="perspective" hidden="{{ showSettings }}">
 	<view class="book-wrap">
@@ -47,12 +49,12 @@
 			<image src="./img/dir_icon.jpg" style="width:70rpx"></image>
 			目录
 		</view>
-		<view class="modal_inner">
-			<image src="./img/listen_icon.gif" style="width:80rpx"></image>
+		<view class="modal_inner" bindtap="jumpToListen">
+			<image src="./img/listen_icon.gif"  style="width:80rpx"></image>
 			听书
 		</view>
-		<view class="modal_inner">
-			<image src="./img/set_icon.jpg" style="width:70rpx" bindtap="openSettings"></image>
+		<view class="modal_inner"  bindtap="openSettings">
+			<image src="./img/set_icon.jpg" style="width:70rpx"></image>
 			设置
 		</view>
 	</view>

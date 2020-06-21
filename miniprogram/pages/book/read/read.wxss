@@ -1,6 +1,5 @@
 .perspective {
   margin-top: 0vh;
-  transform-style: preserve-3d;
   height: 80vh;
 }
 
@@ -10,8 +9,6 @@
   position: relative;
   margin-left: 2vh;
   margin-right: 2vh;
-  transform: rotateX(25deg);
-  transform-style: preserve-3d;
 }
 
 .page {
@@ -26,7 +23,7 @@
   align-items: center;
   transform-origin: left;
   border: 2vh solid ;
-  border-radius: 2vh 1vh 1vh 0;
+  border-radius: 2vh 1vh 0 0;
   background: -webkit-radial-gradient(white, white, white, gray)
 }
 
@@ -40,13 +37,13 @@
 
 .bottom-page {
   position: relative;
-  margin-top: -1.5vh;
   margin-left: 2vh;
   margin-right: 2vh;
   height: 5vh;
+  margin-top: 4vh;
   border: 2vh solid ;
+  border-top: 2vh;
   width: 44vh;
-  transform: rotateX(0deg) rotateY(0deg);
   border-radius: 0vh 0vh 5vh 10vh;
   border-left: 2vh solid;
   border-bottom: 2vh solid ;
@@ -57,9 +54,11 @@
 
 
 .function-bar{
-  margin-top: 12vh;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex-flow: column;
+  position: fixed;
 }
 
 /* 底部功能栏 */
@@ -82,6 +81,10 @@
   text-align: center;
   display: flex;
   flex-flow: column;
+}
+
+.modal_inner:active{
+  background-color: grey;
 }
 
 .setting-item{

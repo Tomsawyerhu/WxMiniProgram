@@ -1,18 +1,18 @@
 {
   "pages": [
-    "pages/book/login/login",
     "pages/book/index/index",
-    "pages/book/search/search",
-    "pages/book/user/note/shownote/shownote",
-    "pages/book/user/readingRecord/readingRecord",
     "pages/book/read/read",
+    "pages/book/listen/listen",
     "pages/book/user/note/writenote/writenote",
+    "pages/book/user/note/shownote/shownote",
+    "pages/book/login/login",
+    "pages/book/search/search",
+    "pages/book/user/readingRecord/readingRecord",
     "pages/book/detail/detail",
     "pages/book/shelf/shelf",
     "pages/book/user/user",
     "pages/book/user/chooseAvatar/chooseAvatar",
-    "pages/book/listen/listen"
-    
+    "pages/book/user/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -22,5 +22,8 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

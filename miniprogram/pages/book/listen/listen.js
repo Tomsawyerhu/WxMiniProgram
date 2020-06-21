@@ -13,7 +13,9 @@ Page({
     'currentProgressFormat': "00:00",
     'maxProgressFormat': "00:00",
     'timer': null,
-    'mode': 'loop'
+    'mode': 'loop',
+    'showMenu':false,
+    'videoList':[{'name':'video1','description':'this is video1'},{'name':'video2','description':'this is video2'}]
   },
   watch: {
     'currentProgressHandler': function (oldValue, newValue) {
@@ -69,6 +71,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    
 
   },
 
@@ -76,7 +79,10 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //退出页面时将播放器状态重置，并且终止计时器
+    const audioPlay = require("../../../common/audioPlayer.js");
+    audioPlay.finish()
+    this.clearTimer()
   },
 
   /**
@@ -220,5 +226,46 @@ Page({
         'timer': null
       })
     }
+  },
+
+  showMenu:function () {
+    this.setData({
+      showMenu:true
+    })
+  },
+
+  closeMenu:function () {
+    this.setData({
+      showMenu:false
+    })
+  },
+
+  chooseVideo:function (e) {
+    var vname=e.currentTarget.dataset.vname
+    //todo请求音频资源
+    let videoInfo={
+      'src':'https://bookstorage.oss-cn-hangzhou.aliyuncs.com/video/Hawk%20Nelson%20-%20Sold%20Out%20%28%E6%9E%AA%E5%A3%B0%E7%89%88%29.mp3',
+      'length': 418
+    }
+    //加载入新的播放器
+    const audioPlay = require("../../../common/audioPlayer.js");
+    audioPlay.finish()
+    audioPlay.setBasicInfo({
+      'src': videoInfo.src,
+      'length': videoInfo.length,
+      'loop': this.data.mode=='loop',
+    })
+
+    this.setData({
+      'currentProgress':0,
+      'maxProgress': videoInfo.length,
+      'currentProgressFormat': this.format(0),
+      'maxProgressFormat': this.format(videoInfo.length),
+      'isPlay':false,
+      'showMenu':false
+    })
+    this.clearTimer()
   }
+
+
 })

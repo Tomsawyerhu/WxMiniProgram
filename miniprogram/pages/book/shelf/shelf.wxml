@@ -7,7 +7,7 @@
 	<i-grid >
 		<i-grid-item>
 			<view style="height:20vh" class="book">
-      <image src="./img/ape1.jpg" style="height:15vh;width:10vh"></image>
+      <image src="./img/ape1.jpg" style="height:15vh;width:10vh" bindtap="showBookInfo"></image>
       <text style="font-size:x-small;margin-top:3vh">书名</text>
        <text style="font-size:x-small;margin-top:1vh">阅读进度</text>
       

@@ -1,37 +1,20 @@
 <!--miniprogram/pages/book/user/note/writenote/writenote.wxml-->
-<view>
-	<view class="header">
-    <i-icon bindtap="back" type="close" size="28" color="#80848f" />
-    <i-icon bindtap="undo" type="undo" size="28" color="#80848f" />
-    <i-icon bindtap="save" type="lock" size="28" color="#80848f" />
-		<i-icon  bindtap="upload" type="send" size="28" color="#80848f" />
-	</view>
-	<view class="body">
-  <textarea 
-    placeholder="请输入你的标题" 
-    maxlength="2000" 
-    auto-focus 
-    adjust-position
-    value="{{title}}" 
-    bindinput="titlegetInput"
-    style="height:5vh">
-  </textarea>
-  	</view>
-	<view class="body">
-		<textarea 
-    placeholder="写点东西吧" 
-    maxlength="2000" 
-    auto-focus 
-    adjust-position
-    value="{{text}}" 
-    bindinput="textgetInput"
-    style="height:70vh">
-  </textarea>
-	</view>
 
-	<view class="footer">
-		<text>字数统计：</text>
-		{{words}}
-	</view>
-
+<view class="header">
+	<i-icon bindtap="back" type="close" size="28" color="#80848f" />
+	<i-icon bindtap="undo" type="undo" size="28" color="#80848f" />
+	<i-icon bindtap="save" type="lock" size="28" color="#80848f" />
+	<i-icon bindtap="upload" type="send" size="28" color="#80848f" />
 </view>
+
+<view class="body">
+	<van-cell-group>
+		<van-field label="标题" value="{{ title }}" placeholder="想个标题" border="{{ false }}" bind:input="titlegetInput" />
+		<van-field value="{{text}}" label="正文" type="textarea" placeholder="写点什么" border="{{ false }}" bind:input="textgetInput" autosize="{{textStyle}}"  max-length="500" />
+	</van-cell-group>
+</view>
+
+<view class="footer">字数统计：{{word}}</view>
+
+<van-notify id="van-notify" />
+

@@ -2,7 +2,6 @@ const audioPlayer={
   audioContext:wx.createInnerAudioContext(),
   audioInfo:{
     length:Number,
-    src:String,
     mode:String,
     status:"none",//音频播放状态
     __author__:"hhc",
@@ -17,6 +16,7 @@ const getDefaultPlayer=function () {
         audioPlayer.audioInfo[v]=null
       }
   });
+  console.log(audioPlayer)
   return audioPlayer;
 }
 
@@ -39,7 +39,6 @@ const playAudio=function () {
   }else{
     console.error("音频未初始化");
   }
-  console.log(audioPlayer)
 }
 
 const pauseAudio=function(){
@@ -72,7 +71,8 @@ const jumpTo=function (point) {
 }
 
 const finish=function () {
-  getDefaultPlayer()
+  pauseAudio()
+  audioPlayer.audioContext=wx.createInnerAudioContext()
   audioPlayer.audioInfo.status="none"
 }
 
@@ -87,5 +87,6 @@ module.exports={
   replayAudio:replayAudio,
   jumpTo:jumpTo,
   finish:finish,
-  getBasicInfo:getBasicInfo
+  getBasicInfo:getBasicInfo,
+  getDefaultPlayer:getDefaultPlayer
 }

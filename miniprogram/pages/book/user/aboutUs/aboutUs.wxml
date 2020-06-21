@@ -1,0 +1,16 @@
+<!--miniprogram/pages/book/aboutUs/aboutUs.wxml-->
+<view style="height:5vh"></view>
+<van-icon name="manager-o" size="50px" info="制作人员" color="blue"/>
+<view style="height:2vh"></view>
+<van-grid column-num="2" gutter="{{ 10 }}">
+  <van-grid-item icon="{{stuAvatars[index]}}" text="{{stuNames[index]}}" wx:for="{{ 5 }}" />
+</van-grid>
+
+<view style="height:10vh"></view>
+<van-icon name="user-o" size="50px" info="指导老师" color="yellow"/>
+<view style="height:2vh"></view>
+<van-grid column-num="1" >
+  <van-grid-item icon="{{teaAvatars[index]}}" text="{{teaNames[index]}}" wx:for="{{ 1 }}" icon-size="50px"/>
+</van-grid>
+
+

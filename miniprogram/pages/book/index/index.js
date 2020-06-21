@@ -6,38 +6,44 @@ Page({
    */
   data: {
     current: 'homepage',
-    scrollTop : 0,
-    px:['文学','历史','科技','小说'],
-    bookperline:2,
-    books:[],
-    booksnum:7,
-    index1:null,//行数组
-    index2:null,//列数组
+    scrollTop: 0,
+    px: ['文学', '历史', '科技', '小说'],
+    bookperline: 2,
+    books: [],
+    booksnum: 7,
+    index1: null,//行数组
+    index2: null,//列数组
     //分享链接
-    share:function(event) {
+    share: function (event) {
       console.log("分享")
     },
     //收藏链接
-    shelf:function (event) {
+    shelf: function (event) {
       console.log("收藏")
     },
-    dailyRecommend:['文学','历史','科技','小说']
+    dailyRecommend: ['文学', '历史', '科技', '小说']
 
 
-},
+  },
 
-handleChange ({ detail }) {
+  handleChange({ detail }) {
+    if (detail.key == 'shelf') {
+      wx.navigateTo({
+        url: '../../book/shelf/shelf',
+      })
+    }else if(detail.key == 'mine'){
+      wx.navigateTo({
+        url: '../../book/user/user',
+      })
+    }
+  },
+
+  //页面滚动执行方式
+  onPageScroll(event) {
     this.setData({
-        current: detail.key
-    });
-},
-
-//页面滚动执行方式
-onPageScroll(event){
-  this.setData({
-      scrollTop : event.scrollTop
-  })
-},
+      scrollTop: event.scrollTop
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -45,8 +51,8 @@ onPageScroll(event){
   onLoad: function (options) {
     this.setData({
       //+1保证底边格式
-      'index1':[...Array(Math.ceil(this.data.booksnum/this.data.bookperline+1)).keys()],
-      'index2':[...Array(this.data.bookperline).keys()]
+      'index1': [...Array(Math.ceil(this.data.booksnum / this.data.bookperline + 1)).keys()],
+      'index2': [...Array(this.data.bookperline).keys()]
     })
 
   },
@@ -100,10 +106,10 @@ onPageScroll(event){
 
   },
 
-  startSearch:function () {
+  startSearch: function () {
     wx.navigateTo({
       url: '../search/search',
     })
-    
+
   }
 })
