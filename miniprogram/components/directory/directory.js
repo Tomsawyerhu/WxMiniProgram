@@ -12,9 +12,9 @@ Component({
       type:String,
       value:"author"
     },//作者
-    charpternum:{
-      type:Number,
-      value:"0"
+    charpters:{
+      type:Array,
+      value:{}
     }//章数
   },
 
@@ -29,11 +29,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    jump_to_certain_charpter:function(charpter){
-      wx.navigateTo({
-        url: '../../pages/book/read?charpter='+charpter,
-      })
-
+    jump_to_certain_charpter:function(data){
+      var charpter=data.currentTarget.dataset.index
+      this.triggerEvent("changeCharpter", charpter);
     }//跳转至指定书的指定章节
   }
 })

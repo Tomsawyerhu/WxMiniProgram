@@ -1,22 +1,42 @@
-const requestPagesAPI = function (book,charpter, line, word) {
+const requestBookAPI = function (bookId) {
   var that = this
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/book/getCharpterAsPages?book='+book +"&charpter="+ charpter+"&line="+line+"&word="+word, //请求书的某一章节的内容
+      url: 'https://127.0.0.1:8080/api/book/getBook?id='+bookId,
       method:"GET",
-      //headers: {
-       // 'Content-Type': 'application/json'
-      //},
       success: function (res) { 
         console.log(res)
-        let result=res.data.content
+        let result=res.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.message)
       }
     })
   })
 
 }
-export default requestPagesAPI
+
+const requestPagesAPI = function (bookId,charpter,lines,words) {
+  var that = this
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/book/getChapterAsPages?book='+bookId+"&charpter="+charpter+"&line="+lines+"&word="+words,
+      method:"GET",
+      success: function (res) { 
+        console.log(res)
+        let result=res.content
+        resolve(result)
+      }, 
+      fail: function (res) {
+        reject(res.message)
+      }
+    })
+  })
+
+}
+
+module.exports= {
+  'requestBookAPI':requestBookAPI,
+  'requestPagesAPI':requestPagesAPI
+}

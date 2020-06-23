@@ -1,14 +1,18 @@
 // pages/book/read/read.js
-import requestPagesAPI from "../../../api/read"
+import { requestBookAPI, requestPagesAPI } from "../../../api/read"
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    pagenum: 2, //页数初始为0
+    pagenum: 0, //页数初始为0
     line: 20,
     word: 15,
-    pages: ["page1", "page2", "page3", "page4"], // 缓存页
+    pages: ["page1", "page2", "page3", "page4"], // 页
+    directories: ['a', 'b', 'c'],//目录
+    bookName: "百年孤独",//书名
+    author: "马尔克斯",//作者
+
     //记录触摸位置
     touchS: [0, 0],
     touchE: [0, 0],
@@ -75,17 +79,26 @@ Page({
    */
   onShow: function (options) {
     var app = getApp()
-    var charpterId = options.charpter ? options.charpter : 0 //当前章节
-    var bookId = app.globalData.book
-    //bookId测试时设为0
-    requestPagesAPI("0", charpterId, this.data.line, this.data.word).then((res) => {
+    requestBookAPI(app.globalData.currentBookId).then((res) => {
+      app.globalData.currentBookInfo = res
       this.setData({
-        'pages': res.data.content
+        'directories': res.charpters,
+        'author': res.bookAuthor,
+        'bookName': res.bookName
       })
     }).catch((res) => {
-      console.log("错误码：" + res.data.message)
-      //todo
+      console.log("错误信息：" + res)
     })
+
+
+    //加载第一章
+    requestPagesAPI(app.globalData.currentBookId,0, this.data.line, this.data.word).then((data) => {
+      this.setData({
+        pages: data,
+      })
+    })
+
+
   },
 
 
@@ -260,9 +273,20 @@ Page({
       'currentBookColor': '#' + this.formatZero(String(this.ten_to_sixteen(newValue)), 6)
     })
   },
+  
   jumpToListen: function () {
     wx.navigateTo({
       url: '../listen/listen',
+    })
+  },
+
+  changeCharpter:function (e) {
+    var app=getApp()
+    console.log("change to charpter"+e.detail);
+    requestPagesAPI(app.globalData.currentBookId,e.detail, this.data.line, this.data.word).then((data) => {
+      this.setData({
+        pages: data,
+      })
     })
   },
 

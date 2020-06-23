@@ -24,7 +24,7 @@
 <van-popup closeable
   close-icon-position="top-right"
   position="left" show="{{showDirectory}}" bind:close="toggleLeft" hidden="{{showSettings}}" customStyle="width:80%;z-index=100">
-		<book-dir bookname="百年孤独" charpternum="100" author="马尔克斯" class="directory"></book-dir>
+		<book-dir  bind:changeCharpter="changeCharpter" bookname="{{bookName}}" charpters="{{directories}}" author="{{author}}" class="directory"></book-dir>
 </van-popup>
 
 

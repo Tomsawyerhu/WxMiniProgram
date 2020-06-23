@@ -19,7 +19,8 @@ App({
       noteCache:'',
       noteTitleCache:'',
       openId:'a',
-      userInfo:{}
+      userInfo:{},
+      currentBookId:1,//阅读界面书的id
     }
 
   },

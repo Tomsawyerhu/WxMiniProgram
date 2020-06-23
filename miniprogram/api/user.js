@@ -68,11 +68,10 @@ const addNoteAPI = function (openId,title,noteContent) {
       //},
       success: function (res) { 
         let result=res.data.content
-        console.log(res)
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.data)//带上错误信息
       }
     })
   })

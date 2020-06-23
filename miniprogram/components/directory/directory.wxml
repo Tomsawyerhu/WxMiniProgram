@@ -12,9 +12,9 @@
 		</block>
 			<view style="height:5vh"></view>
 	</view>
-  <scroll-view scroll-y >
-	<block wx:for="{{charpternum+1}}" wx:if="{{item>0}}">
-		<view class="charpter" bindtap="jump_to_certain_charpter({{item}})">{{"第"+item+"章    "+"章节名称"}}</view>
+  <scroll-view scroll-y style="height:80vh">
+	<block wx:for="{{charpters}}" >
+		<view class="charpter" bindtap="jump_to_certain_charpter" data-index="{{index}}">{{"第"+(index+1)+"章 "+charpters[index]}}</view>
 		<view style="height:5vh"></view>
 		
 	</block>
