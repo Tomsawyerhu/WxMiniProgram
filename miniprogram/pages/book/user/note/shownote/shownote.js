@@ -37,6 +37,7 @@ Page({
    */
   onShow: function (options) {
     let that=this
+    console.log('1')
     var app = getApp()
     user.requestNotesAPI(app.globalData.openId).then((res) => {
      
@@ -54,7 +55,6 @@ Page({
      })
     }
     }).catch((res) => {
-      console.log("错误码：" + res.message)
       //todo
     })
   },
@@ -139,7 +139,6 @@ Page({
       createDate: item.createDate,
     })
     }).catch((res) => {
-      console.log("错误码：" + res.message)
       //todo
     })
     

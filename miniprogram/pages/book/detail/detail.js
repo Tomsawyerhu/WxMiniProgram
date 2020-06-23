@@ -82,7 +82,7 @@ Page({
   handleChange({ detail }) {
     if (detail.key == 'homepage') {
       wx.navigateTo({
-        url: '../../book/index/index.js',
+        url: '../../book/index/index',
       })
     }else if(detail.key == 'mine'){
       wx.navigateTo({

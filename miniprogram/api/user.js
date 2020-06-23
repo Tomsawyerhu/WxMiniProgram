@@ -13,7 +13,7 @@ const requestNotesAPI = function (openId) {
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.data)//带上错误信息
       }
     })
   })
@@ -33,7 +33,7 @@ const updateNoteAPI = function (id,content) {
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.data)//带上错误信息
       }
     })
   })
@@ -52,7 +52,7 @@ const deleteNoteAPI = function (id) {
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.data)//带上错误信息
       }
     })
   })
@@ -72,7 +72,7 @@ const addNoteAPI = function (openId,title,noteContent) {
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data.message)//带上错误信息
+        reject(res.data)//带上错误信息
       }
     })
   })
