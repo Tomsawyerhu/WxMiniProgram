@@ -1,5 +1,6 @@
-<i-card thumb="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg">
+<i-card thumb="{{bookImgUrl}}">
 	<view slot="content">
+		<text class="title" style="font-size:15px">{{bookName}}</text>
 		<view class="content-item">
 			<view>
 				推荐指数
@@ -7,32 +8,38 @@
 				</i-rate>
 			</view>
 			<view class="silver-small float-right-bottom">{{readers}}人读过</view>
+			
 		</view>
 
-	</view>
 	<view slot="footer">
 		<view class="caption-wrap">
+		
 			<text class="caption-title" style="font-size:15px">图书一览</text>
 			<text>(未收藏之前部分信息可见)</text>
 			<i-collapse name="{{name}}">
 				<i-collapse-item title="基本介绍" name="name1">
 					<view slot="content">
-						{{charpter0}}
+						{{description}}
 					</view>
 				</i-collapse-item>
-				<i-collapse-item title="序章" name="name2">
-					<view slot="content" i-class-content="green-text">
-						{{charpter1}}
-					</view>
-				</i-collapse-item>
-				<i-collapse-item wx:for="{{content}}" title="第{{index+1}}章" name="name3">
+				<i-collapse-item wx:for="{{content}}" title="{{chapters[index]}}" name="name3">
 					<view slot="content">
 						{{item}}
 					</view>
 				</i-collapse-item>
 			</i-collapse>
-		</view>
-		<view bindtap="comment" style="margin-top:5vh;margin-left:5vh;font-style: oblique;">请留下你的评价哦~~</view>
+			
+	</view>
+	<view bindtap="comment" style="margin-top:5vh;margin-left:5vh;font-style: oblique;">请留下你的评价哦~~</view>
+	</view>
+		<view style="margin-top:5vh;margin-left:5vh;font-style: oblique;"> 
+		<text>\n</text> </view>
+		<view style="margin-top:5vh;margin-left:5vh;font-style: oblique;"> 
+		<text>\n</text> </view>
+		<view style="margin-top:5vh;margin-left:5vh;font-style: oblique;"> 
+		<text>\n</text> </view>
+
+	
 	</view>
 </i-card>
 

@@ -19,7 +19,12 @@ App({
       noteCache:'',
       noteTitleCache:'',
       openId:'a',
-      userInfo:{}
+      userInfo:{},
+      activeBookId:'',
+      activeBookName:'',
+      activeBookImgUrl:'',
+      activeBookAuthor:'',
+      activeBookDescription:'',
     }
 
   },

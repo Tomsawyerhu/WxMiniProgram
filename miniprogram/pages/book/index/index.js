@@ -1,4 +1,5 @@
 // miniprogram/pages/book/index/index.js
+import index from '../../../api/index'
 Page({
 
   /**
@@ -10,7 +11,7 @@ Page({
     px: ['文学', '历史', '科技', '小说'],
     bookperline: 2,
     books: [],
-    booksnum: 7,
+    booksnum: 0,
     index1: null,//行数组
     index2: null,//列数组
     //分享链接
@@ -49,11 +50,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      //+1保证底边格式
-      'index1': [...Array(Math.ceil(this.data.booksnum / this.data.bookperline + 1)).keys()],
-      'index2': [...Array(this.data.bookperline).keys()]
-    })
+    
 
   },
 
@@ -68,7 +65,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that=this
+    var app = getApp()
+    index.getBookListAPI('','').then((res) => {
+      that.setData({
+        books: res,
+        
+      })
+      that.setData({
+        booksnum:this.data.books.length
+      })
+      that.setData({
+        //+1保证底边格式
+        'index1': [...Array(Math.ceil(this.data.booksnum / this.data.bookperline + 1)).keys()],
+        'index2': [...Array(this.data.bookperline).keys()]
+      })
+      
+    }).catch((res) => {
+      //todo
+    })
   },
 
   /**

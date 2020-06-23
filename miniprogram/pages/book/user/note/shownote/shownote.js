@@ -37,7 +37,6 @@ Page({
    */
   onShow: function (options) {
     let that=this
-    console.log('1')
     var app = getApp()
     user.requestNotesAPI(app.globalData.openId).then((res) => {
      

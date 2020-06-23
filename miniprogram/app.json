@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/book/read/read",
-    "pages/book/login/login",
     "pages/book/index/index",
+    "pages/book/login/login",
+  
+    "pages/book/read/read",
 
     "pages/book/listen/listen",
     "pages/book/user/note/writenote/writenote",
     "pages/book/user/note/shownote/shownote",
-
     "pages/book/search/search",
     "pages/book/user/readingRecord/readingRecord",
     "pages/book/detail/detail",

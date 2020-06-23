@@ -7,6 +7,8 @@ Component({
     p:String,
     d:String,
     a:String,
+    n:String,
+    bookId:Number,
   },
 
   /**
@@ -15,7 +17,9 @@ Component({
   data: {
     'picurl':String,
     'description':String,
-    'author':String
+    'author':String,
+    'name':String,
+    'bookId':Number,
   },
 
   created:function(){
@@ -24,6 +28,8 @@ Component({
       'picurl':this.properties.p,
       'description':this.properties.d,
       'author':this.properties.a,
+      'name':this.properties.n,
+      'bookId':this.properties.bookId,
     })
   },
 
@@ -42,7 +48,15 @@ Component({
       console.log("add")
     },
     detailmethod:function(event) {
-      console.log("detail")
+      var app = getApp()
+      app.globalData.activeBookId=this.data.bookId
+      app.globalData.activeBookName=this.data.n,
+      app.globalData.activeBookImgUrl=this.data.p,
+      app.globalData.activeBookAuthor=this.data.a,
+      app.globalData.activeBookDescription=this.data.d,
+      wx.navigateTo({
+        url: '../../../pages/book/detail/detail',
+      })
     }
 
   }
