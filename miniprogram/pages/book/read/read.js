@@ -1,15 +1,17 @@
 // pages/book/read/read.js
-import { requestBookAPI, requestPagesAPI } from "../../../api/read"
+import { requestBookAPI, requestPagesAPI, addReadRecordAPI } from "../../../api/read"
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     pagenum: 0, //页数初始为0
+    charpternum: 0,
     line: 15,
     word: 9,
     pages: ["page1", "page2", "page3", "page4"], // 页
     directories: ['a', 'b', 'c'],//目录
+    bookId: '',
     bookName: "百年孤独",//书名
     author: "马尔克斯",//作者
 
@@ -78,27 +80,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-    var app = getApp()
-    requestBookAPI(app.globalData.activeBookId).then((res) => {
-      app.globalData.currentBookInfo = res
-      this.setData({
-        'directories': res.chapters,
-        'author': res.bookAuthor,
-        'bookName': res.bookName
-      })
-    }).catch((res) => {
-      console.log("错误信息：" + res)
-    })
-
-
-    //加载第一章
-    requestPagesAPI(app.globalData.activeBookId,1, this.data.line, this.data.word).then((data) => {
-      this.setData({
-        pages: data,
-      })
-    })
-
-
+    //添加阅读记录
+    var data = {
+      'action': 'start reading',
+      'bookId': this.data.bookId,
+      'charpter': this.data.charpternum,
+      'page': this.data.pagenum
+    }
+    this.uploadReadRecord(data)
   },
 
 
@@ -133,6 +122,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    var app = getApp()
+    requestBookAPI(app.globalData.activeBookId).then((res) => {
+      app.globalData.currentBookInfo = res
+      this.setData({
+        'directories': res.chapters,
+        'author': res.bookAuthor,
+        'bookName': res.bookName,
+        'bookId': res.id
+      })
+    }).catch((res) => {
+      console.log("错误信息：" + res)
+    })
+
+
+    //加载第一章
+    requestPagesAPI(app.globalData.activeBookId, 1, this.data.line, this.data.word).then((data) => {
+      this.setData({
+        pages: data,
+      })
+    })
 
   },
 
@@ -140,6 +149,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    //添加阅读记录
+    var data = {
+      'action': 'finish reading',
+      'bookId': this.data.bookId,
+      'charpter': this.data.charpternum,
+      'page': this.data.pagenum
+    }
+    this.uploadReadRecord(data)
 
   },
 
@@ -147,6 +164,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    //添加阅读记录
+    var data = {
+      'action': 'finish reading',
+      'bookId': this.data.bookId,
+      'charpter': this.data.charpternum,
+      'page': this.data.pagenum
+    }
+    this.uploadReadRecord(data)
 
   },
 
@@ -273,21 +298,40 @@ Page({
       'currentBookColor': '#' + this.formatZero(String(this.ten_to_sixteen(newValue)), 6)
     })
   },
-  
+
   jumpToListen: function () {
     wx.navigateTo({
       url: '../listen/listen',
     })
   },
 
-  changeCharpter:function (e) {
-    var app=getApp()
-    console.log("change to charpter"+e.detail);
-    requestPagesAPI(app.globalData.activeBookId,e.detail, this.data.line, this.data.word).then((data) => {
+  changeCharpter: function (e) {
+    var app = getApp()
+    console.log("change to charpter" + e.detail);
+    requestPagesAPI(app.globalData.activeBookId, e.detail, this.data.line, this.data.word).then((data) => {
       this.setData({
+        charpternum: e.detail,
         pages: data,
       })
     })
+  },
+
+  uploadReadRecord: function (params) {
+    let data = {}
+    params.keys().foreach((key) => {
+      data.key = params.key
+    })
+    var date = new Date();
+    var year = date.getFullYear(); //获取当前年份
+    var mon = date.getMonth() + 1; //获取当前月份
+    var da = date.getDate(); //获取当前日
+    var day = date.getDay(); //获取当前星期几
+    var h = date.getHours(); //获取小时
+    var m = date.getMinutes(); //获取分钟
+    var s = date.getSeconds(); //获取秒
+    data.date = String(year) + '-' + String(mon) + '-' + String(da) + ' ' + String(h) + ":" + String(m) + ':' + String(s)
+    var app = getApp()
+    addReadRecordAPI(data, app.globalData.openId)
   },
 
   //十进制转16进制
