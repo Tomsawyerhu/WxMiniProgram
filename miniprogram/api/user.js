@@ -100,7 +100,7 @@ const requestReadRecordAPI = function (openId,date) {
   var that = this
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/readingRecord/getRecord?openId='+openId+'&date='+date, //请求阅读记录
+      url: 'https://127.0.0.1:8080/api/book/getRecord?openId='+openId+'&date='+date, //请求阅读记录
       method:"GET",
       success: function (res) { 
         console.log(res)

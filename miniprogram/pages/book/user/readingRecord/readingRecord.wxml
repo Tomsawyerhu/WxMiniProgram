@@ -9,7 +9,7 @@
 <view class="{{animationType}} record-area " >
 	<i-card class="record"  extra="天气：晴朗" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
 		<view slot="content" style="height:60vh;width:50vh;margin-top:5vh;margin-bottom:5vh;word-break:break-all">
-		 {{recordData}}
+		 <text>{{recordData}}</text>
 		</view>
 	</i-card>
 </view>

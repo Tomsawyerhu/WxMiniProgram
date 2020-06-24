@@ -37,13 +37,10 @@ Page({
    */
   onShow: function (options) {
     let that=this
-    var app = getApp()
-   
-      
-     
+    var app = getApp()    
     user.requestNotesAPI(app.globalData.openId).then((res) => {
       that.setData({
-        noteList: res.content,
+        noteList: res,
         showDisable:true,
       })
       if(this.data.noteList.length==0){
