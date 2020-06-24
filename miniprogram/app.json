@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/book/read/read",
     "pages/book/login/login",
     "pages/book/user/user",
-  
-    "pages/book/read/read",
     "pages/book/index/index",
     
 

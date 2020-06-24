@@ -114,42 +114,6 @@ const requestReadRecordAPI = function (openId,date) {
   })
 }
 
-const uploadAvatarAPI=function (path) {
-  return new Promise(function (resolve,reject) {
-    wx.uploadFile({
-      url: 'https://127.0.0.1:8080/api/uploadAvatar',
-      filePath:path ,
-      name: 'avatar', 
-      formData: {  // 额外参数   
-      },
-      success: res => { // 上传成功后的代码
-          let result = JSON.parse(res.data)
-          if (result.code == 200) {
-            return "上传成功"
-          }
-      }
-  })
-  })
-  
-}
-
-const getUserAvatarUrlAPI = function (openId) {
-  var that = this
-  return new Promise(function (resolve, reject) {
-    wx.request({
-      url: 'https://127.0.0.1:8080/api/getAvatar'+openId, //请求头像
-      method:"GET",
-      success: function (res) { 
-        console.log(res)
-        let result=res.data.content
-        resolve(result)
-      }, 
-      fail: function (res) {
-        reject(res.message)//带上错误信息
-      }
-    })
-  })
-}
 
 
 export default {
@@ -159,5 +123,4 @@ export default {
   addNoteAPI,
   requestReadRecordAPI,
   updateProfilePhotoAPI,
-
 }

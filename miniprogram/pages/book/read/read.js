@@ -81,13 +81,7 @@ Page({
    */
   onShow: function (options) {
     //添加阅读记录
-    var data = {
-      'action': 'start reading',
-      'bookId': this.data.bookId,
-      'charpter': this.data.charpternum,
-      'page': this.data.pagenum
-    }
-    this.uploadReadRecord(data)
+    
   },
 
 
@@ -131,6 +125,13 @@ Page({
         'bookName': res.bookName,
         'bookId': res.id
       })
+      var data = {
+        'action': 'start reading',
+        'bookId': this.data.bookId,
+        'charpter': this.data.charpternum,
+        'page': this.data.pagenum
+      }
+      this.uploadReadRecord(data)
     }).catch((res) => {
       console.log("错误信息：" + res)
     })
@@ -142,7 +143,7 @@ Page({
         pages: data,
       })
     })
-
+    
   },
 
   /**
@@ -312,15 +313,13 @@ Page({
       this.setData({
         charpternum: e.detail,
         pages: data,
+        pagenum:0
       })
     })
   },
 
   uploadReadRecord: function (params) {
-    let data = {}
-    params.keys().foreach((key) => {
-      data.key = params.key
-    })
+    let data = params
     var date = new Date();
     var year = date.getFullYear(); //获取当前年份
     var mon = date.getMonth() + 1; //获取当前月份
@@ -330,7 +329,8 @@ Page({
     var m = date.getMinutes(); //获取分钟
     var s = date.getSeconds(); //获取秒
     data.date = String(year) + '-' + String(mon) + '-' + String(da) + ' ' + String(h) + ":" + String(m) + ':' + String(s)
-    var app = getApp()
+    console.log(data)
+    var app =getApp()
     addReadRecordAPI(data, app.globalData.openId)
   },
 

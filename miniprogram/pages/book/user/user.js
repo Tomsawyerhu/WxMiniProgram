@@ -1,3 +1,5 @@
+import login from "../../../api/login"
+
 // miniprogram/pages/book/user/user.js
 Page({
 
@@ -30,10 +32,14 @@ Page({
    */
   onShow: function () {
       var app=getApp()
-      this.setData({
-        profileUrl: app.globalData.profileUrl,
-        nickName: app.globalData.nickName
+      var that=this
+      login.requestOpenIdAPI(app.globalData.openId).then((res)=>{
+        that.setData({
+          profileUrl: res.content.content.profilePhotoUrl,
+          nickName: app.globalData.nickName
+        })
       })
+      
 
   },
 

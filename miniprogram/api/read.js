@@ -40,7 +40,7 @@ const addReadRecordAPI = function (record,openId) {
   var that = this
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/book/addReadRecord',
+      url: 'https://127.0.0.1:8080/api/book/addReadRecord?openId='+openId,
       method:"POST",
       data:record,
       success: function (res) { 
