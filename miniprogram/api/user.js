@@ -111,11 +111,31 @@ const uploadAvatarAPI=function (path) {
   
 }
 
+const getUserAvatarUrlAPI = function (openId) {
+  var that = this
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/getAvatar'+openId, //请求头像
+      method:"GET",
+      success: function (res) { 
+        console.log(res)
+        let result=res.data.content
+        resolve(result)
+      }, 
+      fail: function (res) {
+        reject(res.message)//带上错误信息
+      }
+    })
+  })
+}
+
+
 export default {
   requestNotesAPI,
   updateNoteAPI,
   deleteNoteAPI,
   addNoteAPI,
   requestReadRecordAPI,
-  uploadAvatarAPI
+  uploadAvatarAPI,
+  getUserAvatarUrlAPI
 }

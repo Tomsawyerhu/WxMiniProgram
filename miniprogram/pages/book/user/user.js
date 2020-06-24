@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current:'mine'
+    current:'mine',
+    avatarUrl:''
 
   },
 
@@ -27,6 +28,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var userApi=require('../../../api/user.js')
+    var app=getApp()
+    var that=this
+    userApi.default.getUserAvatarUrlAPI(app.globalData.openId).then(function (url) {
+      that.setData({
+        avatarUrl:url
+      })
+    })
 
   },
 

@@ -1,18 +1,11 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/book/user/user",
-    "pages/book/read/read",
-    "pages/book/index/index",
- 
-    "pages/book/login/login",
-  
-=======
     "pages/book/login/login",
     "pages/book/read/read",
     "pages/book/index/index",
-    "pages/book/user/user",
->>>>>>> 0eb6c5066e575a024ca5fecd4b81241c6141931a
+    
+
     "pages/book/listen/listen",
     "pages/book/user/note/writenote/writenote",
     "pages/book/user/note/shownote/shownote",
