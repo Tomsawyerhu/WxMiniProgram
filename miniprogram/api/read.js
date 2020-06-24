@@ -6,7 +6,7 @@ const requestBookAPI = function (bookId) {
       method:"GET",
       success: function (res) { 
         console.log(res)
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
@@ -17,15 +17,15 @@ const requestBookAPI = function (bookId) {
 
 }
 
-const requestPagesAPI = function (bookId,charpter,lines,words) {
+const requestPagesAPI = function (bookId,chapter,lines,words) {
   var that = this
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/book/getChapterAsPages?book='+bookId+"&charpter="+charpter+"&line="+lines+"&word="+words,
+      url: 'https://127.0.0.1:8080/api/book/getChapterAsPages?book='+bookId+"&chapter="+chapter+"&line="+lines+"&word="+words,
       method:"GET",
       success: function (res) { 
         console.log(res)
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {

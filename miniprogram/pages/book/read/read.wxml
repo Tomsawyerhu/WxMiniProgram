@@ -38,7 +38,8 @@
 		class="page" 
 		style="border-color:{{bookColor}};background:-webkit-radial-gradient(white, white, white, {{bookColor}});{{pages.length-index-1>=pagenum?'':'transform:rotateY(-180deg)'}}" 
 		bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
-			<view class="page-content" style="color:{{pageFontColor}}">{{pages[pages.length-index-1]}}</view>
+			<view class="page-content" style="color:{{pageFontColor}}">
+			<text>{{pages[pages.length-index-1].content}}</text></view>
 		</view>
 	</view>
 	<view class="bottom-page" style="border-color:{{bookColor}};border-left-color:{{bookColor}};border-bottom-color:{{bookColor}}"></view>

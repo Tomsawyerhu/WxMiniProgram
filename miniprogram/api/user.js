@@ -5,8 +5,7 @@ const requestNotesAPI = function (openId) {
       url: 'https://127.0.0.1:8080/api/note/getNoteList?openId='+openId, //请求笔记
       method:"GET",
       success: function (res) { 
-        console.log(res)
-        let result=res.content
+        let result=res.data
         resolve(result)
       }, 
       fail: function (res) {
@@ -52,6 +51,9 @@ const addNoteAPI = function (openId,title,noteContent) {
   return new Promise(function ( resolve,reject) {
     wx.request({
       url: 'https://127.0.0.1:8080/api/note/addNote',//添加笔记
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },
       data:{
         'openId':openId,
         'title':title,
@@ -63,6 +65,7 @@ const addNoteAPI = function (openId,title,noteContent) {
         resolve(result)
       }, 
       fail: function (res) {
+        console.log(res.message)
         reject(res.message)//带上错误信息
       }
     })
