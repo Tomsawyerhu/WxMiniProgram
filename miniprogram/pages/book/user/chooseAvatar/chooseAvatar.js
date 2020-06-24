@@ -1,6 +1,10 @@
 // miniprogram/pages/book/user/chooseAvatar/chooseAvatar.js
 import WeCropper from '../../../../plugin/we-cropper/we-cropper.js';
+<<<<<<< HEAD
 import user from '../../../../api/user'
+=======
+
+>>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
 const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth
 const height = width
@@ -11,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src:'',
+    src: '',
     cropperOpt: {
       id: 'cropper', // 用于手势操作的canvas组件标识符
       targetId: 'targetCropper', // 用于用于生成截图的canvas组件标识符
@@ -22,8 +26,8 @@ Page({
       scale: 2.5, // 最大缩放倍数
       zoom: 8, // 缩放系数
       cut: {
-        x:width/2-75, // 裁剪框x轴起点
-        y: width/2-75, // 裁剪框y轴起点
+        x: width / 2 - 75, // 裁剪框x轴起点
+        y: width / 2 - 75, // 裁剪框y轴起点
         width: 150, // 裁剪框宽度
         height: 150 // 裁剪框高度
       }
@@ -39,20 +43,21 @@ Page({
       cropperOpt
     } = this.data;
     cropperOpt.src = options.src;
-    if (cropperOpt.src) {
-      this.cropper = new WeCropper(cropperOpt)
-        .on('ready', (ctx) => {})
-        .on('beforeImageLoad', (ctx) => {
-          wx.showToast({
-            title: '上传中',
-            icon: 'loading',
-            duration: 3000
-          })
+
+
+    this.cropper = new WeCropper(cropperOpt)
+      .on('ready', (ctx) => { })
+      .on('beforeImageLoad', (ctx) => {
+        wx.showToast({
+          title: '上传中',
+          icon: 'loading',
+          duration: 3000
         })
-        .on('imageLoad', (ctx) => {
-          wx.hideToast()
-        })
-    }
+      })
+      .on('imageLoad', (ctx) => {
+        wx.hideToast()
+      })
+
   },
 
   /**
@@ -65,7 +70,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
 
   },
 
@@ -117,12 +122,20 @@ Page({
   // 生成图片
 
   getCropperImage() {
+<<<<<<< HEAD
     this.cropper.getCropperImage(tempFilePath => {
       
+=======
+    var userApi=require('../../../../api/user.js')
+   
+    this.cropper.getCropperImage(() => {
+      var tempFilePath = this.cropper.src
+>>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
       // tempFilePath 为裁剪后的图片临时路径
       if (tempFilePath) {
         
         // 存储图片
+<<<<<<< HEAD
         // 返回上个Page
       
         var app=getApp()
@@ -134,6 +147,11 @@ Page({
           })
         })
         
+=======
+        userApi.default.uploadAvatarAPI(tempFilePath).then(function (res) {
+          if (res == '上传成功') { alert('上传成功') }
+        })
+>>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
 
       } 
     })
@@ -141,7 +159,7 @@ Page({
 
   uploadTap() {
     const self = this
- 
+
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -149,7 +167,7 @@ Page({
       success(res) {
         let src = res.tempFilePaths[0]
         // 获取裁剪图片资源后，给data添加src属性及其值
-        self.wecropper.pushOrign(src)
+        self.cropper.pushOrign(src)
       }
     })
   },

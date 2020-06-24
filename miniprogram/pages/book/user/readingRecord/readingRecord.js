@@ -1,5 +1,5 @@
 // miniprogram/pages/book/user/readingRecord/readingRecord.js
-import requestReadRecordAPI from '../../../../api/user.js'
+
 const animateData = {
   'Attention Seekers': ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat'],
   'Bouncing Entrances': ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
@@ -16,6 +16,7 @@ const animateData = {
   'Zoom Exits': ['zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp'],
   'Specials': ['hinge', 'jackInTheBox', 'rollIn', 'rollOut']
 };
+
 
 Page({
 
@@ -47,8 +48,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-
+    
+    var app = getApp()
+    var that = this
+    var userApi=require('../../../../api/user.js')
+    userApi.default.requestReadRecordAPI(app.globalData.openId, that.data.date).then(function (record) {
+      that.setData({
+        recordData: record
+      })
+    })
   },
 
   /**
@@ -98,15 +106,17 @@ Page({
       })
     }
 
-    //请求数据
-    var app = getApp()
-    requestReadRecordAPI(app.globalData.openId, this.data.date).then(function (record) {
-      this.setData({
-        recordData:record
-      })
-    }).then(function () {
-      var pro = sleep(1000)
-      pro.then(f)
+    var pro = sleep(1500)
+    var that=this
+    pro.then(function () {
+      //请求数据
+      var app = getApp()
+      var userApi=require('../../../../api/user.js')
+      userApi.default.requestReadRecordAPI(app.globalData.openId, that.data.date).then(function (record) {
+        that.setData({
+          recordData: record
+        })
+      }).then(f)
     })
   }
 

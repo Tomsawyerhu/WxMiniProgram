@@ -6,8 +6,13 @@ Page({
    */
   data: {
     current:'mine',
+<<<<<<< HEAD
     nickName:'',
     profileUrl:'',
+=======
+    avatarUrl:''
+
+>>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
   },
 
   /**
@@ -28,11 +33,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+<<<<<<< HEAD
       var app=getApp()
       this.setData({
         profileUrl: app.globalData.profileUrl,
         nickName: app.globalData.nickName
       })
+=======
+    var userApi=require('../../../api/user.js')
+    var app=getApp()
+    var that=this
+    userApi.default.getUserAvatarUrlAPI(app.globalData.openId).then(function (url) {
+      that.setData({
+        avatarUrl:url
+      })
+    })
+
+>>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
   },
 
   /**
@@ -91,7 +108,6 @@ Page({
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function (res) {
         // success
-        console.log(res)
         src=res.tempFilePaths
       },
       fail: function () {
