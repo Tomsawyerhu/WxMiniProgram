@@ -6,8 +6,8 @@ Page({
    */
   data: {
     pagenum: 0, //页数初始为0
-    line: 20,
-    word: 15,
+    line: 15,
+    word: 9,
     pages: ["page1", "page2", "page3", "page4"], // 页
     directories: ['a', 'b', 'c'],//目录
     bookName: "百年孤独",//书名
@@ -82,7 +82,7 @@ Page({
     requestBookAPI(app.globalData.activeBookId).then((res) => {
       app.globalData.currentBookInfo = res
       this.setData({
-        'directories': res.charpters,
+        'directories': res.chapters,
         'author': res.bookAuthor,
         'bookName': res.bookName
       })
@@ -92,7 +92,7 @@ Page({
 
 
     //加载第一章
-    requestPagesAPI(app.globalData.activeBookId,0, this.data.line, this.data.word).then((data) => {
+    requestPagesAPI(app.globalData.activeBookId,1, this.data.line, this.data.word).then((data) => {
       this.setData({
         pages: data,
       })

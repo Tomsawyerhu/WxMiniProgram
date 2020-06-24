@@ -1,5 +1,6 @@
 var requestOpenIdAPI=function (userName) {
   return new Promise(function (resolve,reject) {
+    console.log(userName)
     wx.request({
       url: 'https://127.0.0.1:8080/api/user/getOpenId?name='+userName,
       method:'GET',

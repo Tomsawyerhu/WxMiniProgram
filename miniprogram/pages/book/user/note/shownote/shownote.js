@@ -38,21 +38,26 @@ Page({
   onShow: function (options) {
     let that=this
     var app = getApp()
-    user.requestNotesAPI(app.globalData.openId).then((res) => {
+   
+      
      
+    user.requestNotesAPI(app.globalData.openId).then((res) => {
       that.setData({
-        noteList: res
+        noteList: res.content,
+        showDisable:true,
       })
       if(this.data.noteList.length==0){
-     that.setData({
-       noteList:  [{
-        createDate:'',
-        title: '你还没有笔记',
-        noteContent:'你还没有笔记',
-      }],
-      showDisable:false,
-     })
-    }
+        that.setData({
+          noteList:  [{
+           createDate:'',
+           title: '你还没有笔记',
+           noteContent:'你还没有笔记',
+         }],
+         showDisable:false,
+        })
+        
+      }
+      
     }).catch((res) => {
       //todo
     })
