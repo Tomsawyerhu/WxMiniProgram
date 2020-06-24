@@ -6,11 +6,11 @@ const requestNotesAPI = function (openId) {
       method:"GET",
       success: function (res) { 
         console.log(res)
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.message)//带上错误信息
+        reject(res.data.message)//带上错误信息
       }
     })
   })
@@ -22,11 +22,11 @@ const updateNoteAPI = function (id,content) {
       url: 'https://127.0.0.1:8080/api/note/updateNote?id='+id+"&content="+ content, //修改笔记
       method:"GET",
       success: function (res) { 
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.messafe)//带上错误信息
+        reject(res.data.message)//带上错误信息
       }
     })
   })
@@ -38,11 +38,11 @@ const deleteNoteAPI = function (id) {
       url: 'https://127.0.0.1:8080/api/note/deleteNote?id='+id, //删除笔记
       method:"GET",
       success: function (res) { 
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.messaage)//带上错误信息
+        reject(res.data.messaage)//带上错误信息
       }
     })
   })
@@ -59,11 +59,11 @@ const addNoteAPI = function (openId,title,noteContent) {
       },
       method:"POST",
       success: function (res) { 
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.message)//带上错误信息
+        reject(res.data.message)//带上错误信息
       }
     })
   })
@@ -73,23 +73,24 @@ const requestReadRecordAPI = function (openId,date) {
   var that = this
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/readingRecord/getRecord?openId='+openId+"&date="+date, //请求阅读记录
+      url: 'https://127.0.0.1:8080/api/readingRecord/getRecord?openId='+openId+'&date='+date, //请求阅读记录
       method:"GET",
       success: function (res) { 
         console.log(res)
-        let result=res.content
+        let result=res.data.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.message)//带上错误信息
+        reject(res.data.message)//带上错误信息
       }
     })
   })
 }
+
 export default {
   requestNotesAPI,
   updateNoteAPI,
   deleteNoteAPI,
   addNoteAPI,
-  requestReadRecordAPI
+  requestReadRecordAPI,
 }
