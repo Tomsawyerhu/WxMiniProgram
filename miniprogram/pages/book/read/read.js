@@ -318,8 +318,9 @@ Page({
 
   uploadReadRecord: function (params) {
     let data = {}
-    params.keys().foreach((key) => {
-      data.key = params.key
+    Object.keys(params).forEach((key) => {
+      console.log(key)
+      data[key] = params[key]
     })
     var date = new Date();
     var year = date.getFullYear(); //获取当前年份
@@ -331,6 +332,7 @@ Page({
     var s = date.getSeconds(); //获取秒
     data.date = String(year) + '-' + String(mon) + '-' + String(da) + ' ' + String(h) + ":" + String(m) + ':' + String(s)
     var app = getApp()
+    console.log(data)
     addReadRecordAPI(data, app.globalData.openId)
   },
 
