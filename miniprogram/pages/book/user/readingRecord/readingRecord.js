@@ -1,4 +1,5 @@
 // miniprogram/pages/book/user/readingRecord/readingRecord.js
+import requestReadRecordAPI from '../../../../api/user.js'
 const animateData = {
   'Attention Seekers': ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat'],
   'Bouncing Entrances': ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
@@ -22,9 +23,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date:'2020-06-18',
-    animationType:'animated '+animateData['Bouncing Entrances'][2],
-    recordData:'111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    date: '2020-06-18',
+    animationType: 'animated ' + animateData['Bouncing Entrances'][2],
+    recordData: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
 
   },
 
@@ -46,6 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
 
   },
 
@@ -84,30 +86,37 @@ Page({
 
   },
 
-  bindDateChange:function (d) {
+  bindDateChange: function (d) {
     this.setData({
-      date:d.detail.value,
-      animationType:'animated '+animateData['Bouncing Exits'][3],
+      date: d.detail.value,
+      animationType: 'animated ' + animateData['Bouncing Exits'][3],
     })
 
-    let f=()=>{
-      //todo请求数据
+    let f = () => {
       this.setData({
-      animationType:'animated '+animateData['Bouncing Entrances'][2],
+        animationType: 'animated ' + animateData['Bouncing Entrances'][2],
+      })
+    }
+
+    //请求数据
+    var app = getApp()
+    requestReadRecordAPI(app.globalData.openId, this.data.date).then(function (record) {
+      this.setData({
+        recordData:record
+      })
+    }).then(function () {
+      var pro = sleep(1000)
+      pro.then(f)
     })
   }
-    var pro=sleep(1000)
-    pro.then(f)
-  },
 
- 
-   
 })
 
-const sleep=t=> {
+
+const sleep = t => {
   return new Promise((resolve) => setTimeout(resolve, t));
 }
 
-module.exports={
-  sleep:sleep
+module.exports = {
+  sleep: sleep
 }
