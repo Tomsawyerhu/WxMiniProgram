@@ -21,7 +21,7 @@ App({
       openId:'a',
       userInfo:{},
 
-      activeBookId:'',
+      activeBookId:1,
       activeBookName:'',
       activeBookImgUrl:'',
       activeBookAuthor:'',

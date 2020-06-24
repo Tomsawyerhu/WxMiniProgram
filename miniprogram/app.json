@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/book/user/user",
     "pages/book/read/read",
     "pages/book/login/login",
     "pages/book/index/index",
@@ -11,7 +12,7 @@
     "pages/book/user/readingRecord/readingRecord",
     "pages/book/detail/detail",
     "pages/book/shelf/shelf",
-    "pages/book/user/user",
+    
     "pages/book/user/chooseAvatar/chooseAvatar",
     "pages/book/user/aboutUs/aboutUs"
   ],

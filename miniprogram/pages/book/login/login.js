@@ -1,4 +1,6 @@
 // miniprogram/pages/book/login/login.js
+import requestOpenIdAPI from '../../../api/login.js'
+
 Page({
 
   /**
@@ -117,8 +119,13 @@ Page({
       app.globalData.userInfo.province=res.detail.userInfo.province
       app.globalData.userInfo.city=res.detail.userInfo.city
 
-      wx.navigateTo({
-        url: '../index/index',
+      requestOpenIdAPI(res.detail.userInfo.nickName).then(function (openId) {
+        var app=getApp()
+        app.globalData.openId=openId
+      }).then(function () {
+        wx.navigateTo({
+          url: '../index/index',
+        })
       })
 
     } else {

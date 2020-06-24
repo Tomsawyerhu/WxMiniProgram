@@ -9,11 +9,11 @@ const requestNotesAPI = function (openId) {
       //},
       success: function (res) { 
         console.log(res)
-        let result=res.data.content
+        let result=res.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data)//带上错误信息
+        reject(res.message)//带上错误信息
       }
     })
   })
@@ -29,11 +29,11 @@ const updateNoteAPI = function (id,content) {
        // 'Content-Type': 'application/json'
       //},
       success: function (res) { 
-        let result=res.data.content
+        let result=res.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data)//带上错误信息
+        reject(res.messafe)//带上错误信息
       }
     })
   })
@@ -48,11 +48,11 @@ const deleteNoteAPI = function (id) {
        // 'Content-Type': 'application/json'
       //},
       success: function (res) { 
-        let result=res.data.content
+        let result=res.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data)//带上错误信息
+        reject(res.messaage)//带上错误信息
       }
     })
   })
@@ -67,17 +67,18 @@ const addNoteAPI = function (openId,title,noteContent) {
        // 'Content-Type': 'application/json'
       //},
       success: function (res) { 
-        let result=res.data.content
+        let result=res.content
         resolve(result)
       }, 
       fail: function (res) {
-        reject(res.data)//带上错误信息
+        reject(res.message)//带上错误信息
       }
     })
   })
 
 }
-export default {requestNotesAPI,
+export default {
+  requestNotesAPI,
   updateNoteAPI,
   deleteNoteAPI,
   addNoteAPI,
