@@ -79,7 +79,7 @@ Page({
    */
   onShow: function (options) {
     var app = getApp()
-    requestBookAPI(app.globalData.currentBookId).then((res) => {
+    requestBookAPI(app.globalData.activeBookId).then((res) => {
       app.globalData.currentBookInfo = res
       this.setData({
         'directories': res.charpters,
@@ -92,7 +92,7 @@ Page({
 
 
     //加载第一章
-    requestPagesAPI(app.globalData.currentBookId,0, this.data.line, this.data.word).then((data) => {
+    requestPagesAPI(app.globalData.activeBookId,0, this.data.line, this.data.word).then((data) => {
       this.setData({
         pages: data,
       })
@@ -283,7 +283,7 @@ Page({
   changeCharpter:function (e) {
     var app=getApp()
     console.log("change to charpter"+e.detail);
-    requestPagesAPI(app.globalData.currentBookId,e.detail, this.data.line, this.data.word).then((data) => {
+    requestPagesAPI(app.globalData.activeBookId,e.detail, this.data.line, this.data.word).then((data) => {
       this.setData({
         pages: data,
       })

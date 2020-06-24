@@ -1,22 +1,22 @@
 {
   "usingComponents": {
-    "i-tab-bar": "../../dist/tab-bar/index",
-    "i-tab-bar-item": "../../dist/tab-bar-item/index",
+   "i-tab-bar": "../../../dist/tab-bar/index",
+    "i-tab-bar-item": "../../../dist/tab-bar-item/index",
 
     "book-card":"../../../components/bookcard/bookcard",
 
-    "i-grid": "../../dist/grid/index",
-    "i-grid-item": "../../dist/grid-item/index",
-    "i-grid-icon": "../../dist/grid-icon/index",
-    "i-grid-label": "../../dist/grid-label/index",
+    "i-grid": "../../../dist/grid/index",
+    "i-grid-item": "../../../dist/grid-item/index",
+    "i-grid-icon": "../../../dist/grid-icon/index",
+    "i-grid-label": "../../../dist/grid-label/index",
 
-    "i-sticky": "../../dist/sticky/index",
-    "i-sticky-item": "../../dist/sticky-item/index",
+    "i-sticky": "../../../dist/sticky/index",
+    "i-sticky-item": "../../../dist/sticky-item/index",
     
-    "i-icon": "../../dist/icon/index",
+    "i-icon": "../../../dist/icon/index",
 
-    "i-tag": "../../dist/tag/index",
-    "i-notice-bar": "../../dist/notice-bar/index",
+    "i-tag": "../../../dist/tag/index",
+    "i-notice-bar": "../../../dist/notice-bar/index",
 
     "van-tab":"../../../vant/tab/index",
     "van-tabs":"../../../vant/tabs/index",

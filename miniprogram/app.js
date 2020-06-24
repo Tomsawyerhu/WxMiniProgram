@@ -20,7 +20,12 @@ App({
       noteTitleCache:'',
       openId:'a',
       userInfo:{},
-      currentBookId:1,//阅读界面书的id
+
+      activeBookId:'',
+      activeBookName:'',
+      activeBookImgUrl:'',
+      activeBookAuthor:'',
+      activeBookDescription:'',
     }
 
   },

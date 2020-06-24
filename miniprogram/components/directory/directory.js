@@ -31,7 +31,7 @@ Component({
   methods: {
     jump_to_certain_charpter:function(data){
       var charpter=data.currentTarget.dataset.index
-      this.triggerEvent("changeCharpter", charpter);
+      this.triggerEvent("changeCharpter", charpter+1);
     }//跳转至指定书的指定章节
   }
 })

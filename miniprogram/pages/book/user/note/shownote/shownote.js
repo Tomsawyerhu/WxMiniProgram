@@ -54,7 +54,6 @@ Page({
      })
     }
     }).catch((res) => {
-      console.log("错误码：" + res.message)
       //todo
     })
   },
@@ -139,7 +138,6 @@ Page({
       createDate: item.createDate,
     })
     }).catch((res) => {
-      console.log("错误码：" + res.message)
       //todo
     })
     

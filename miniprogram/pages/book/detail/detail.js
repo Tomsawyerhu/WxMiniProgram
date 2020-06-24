@@ -1,16 +1,22 @@
 // miniprogram/pages/book/detail/detail.js
+import index from '../../../api/index'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    bookId:0,
+    bookName:'',
+      bookImgUrl:'',
+      Author:'',
+      description:'',
     current: 'shelf',
     starIndex:3,
     readers:1000,
-    charpter0:"作者：马尔克斯",
     charpter1:"序章",
-    content:["第一章","第二章","第三章"],
+    charpters:[],
+    content:[],
     commentVisible:false,
     commentRate:3,
     commentChoice:'a.10岁以下 ',
@@ -35,14 +41,31 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that=this
+    var app = getApp()
+    that.setData({
+      bookName:app.globalData.activeBookName,
+      bookImgUrl:app.globalData.activeBookImgUrl,
+      Author:app.globalData.activeBookAuthor,
+      description:app.globalData.activeBookDescription,
+    })
+    index.getBookAPI(app.globalData.activeBookId).then((res) => {
+      that.setData({
+        chapters:res.chapters,
+        content:res.contents
+      })
+    
+      
+    }).catch((res) => {
+      //todo
+    })
   },
 
   /**
@@ -82,7 +105,7 @@ Page({
   handleChange({ detail }) {
     if (detail.key == 'homepage') {
       wx.navigateTo({
-        url: '../../book/index/index.js',
+        url: '../../book/index/index',
       })
     }else if(detail.key == 'mine'){
       wx.navigateTo({

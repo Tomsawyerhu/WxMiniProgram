@@ -100,6 +100,7 @@ Page({
   },
 
   upload: function (params) {
+    var self=this
     wx.showModal({
       content: '确定上传吗',
       showCancel: true,
@@ -108,17 +109,19 @@ Page({
       confirmText: "确定",
       confirmColor: "#0f0",
       success: function (res) {
+       
         if (res.confirm) {
           //清空全局变量
           var app = getApp()
           app.globalData.noteCache = ''
           app.globalData.noteTitleCache = ''
-          user.addNoteAPI(app.globalData.openId, this.data.title, this.data.text)
-          this.setData({
+          user.addNoteAPI(app.globalData.openId, self.data.title, self.data.text)
+          self.setData({
             text: '',
             title: '',
             word: 0
           })
+          Notify({ type: 'success', message: '上传成功' });
         } else if (res.cancel) {
         }
       }

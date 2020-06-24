@@ -51,13 +51,14 @@
 							<i-icon class="float-right" bindtap="startSearch" type="search" size="20" color="#80848f" />
 						</view>
 
-
-						<i-grid wx:for="{{index1}}" wx:for-index="rowindex">
+<i-grid wx:for="{{index1}}" wx:for-index="rowindex">
 							<i-grid-item wx:for="{{index2}}" wx:for-index="colindex">
-								<book-card a="马尔克斯" p="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" d="这是百年孤独" wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
+								<book-card a="{{books[rowindex*2+colindex].bookAuthor}}"
+								n="{{books[rowindex*2+colindex].bookName}}" p="{{books[rowindex*2+colindex].bookImgUrl}}" d="{{books[rowindex*2+colindex].bookDescription}}" bookId="{{books[rowindex*2+colindex].id}}" wx-if="{{rowindex*bookperline+colindex<booksnum}}"></book-card>
 							</i-grid-item>
 
 						</i-grid>
+						
 					</van-tab>
 					<van-tab title="每日推荐" name="b">
 						<scroll-view scroll-y>

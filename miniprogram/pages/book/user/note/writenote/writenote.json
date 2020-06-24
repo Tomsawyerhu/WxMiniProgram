@@ -1,8 +1,8 @@
 {
   "usingComponents": {
     "i-icon": "../../../../../dist/icon/index",
-    "van-field": "../../../vant/field/index",
-    "van-cell-group": "../../../vant/cell-group/index",
-    "van-notify": "../../../vant/notify/index"
+    "van-field": "../../../../../vant/field/index",
+    "van-cell-group": "../../../../../vant/cell-group/index",
+    "van-notify": "../../../../../vant/notify/index"
   }
 }
