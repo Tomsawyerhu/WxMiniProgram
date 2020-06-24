@@ -4,7 +4,9 @@
     <view slot="content" class="content">简介：{{d}}</view>
     <view slot="footer" class="footer">
         <i-icon type="add" size="20" color="#80848f" bindtap="addmethod"/>
-        <i-icon type="accessory" size="20" color="#80848f" bindtap="sharemethod"/>
          <i-icon type="browse" size="20" color="#80848f" bindtap="detailmethod"/>
     </view>
+   
 </i-card>
+
+ <van-notify id="van-notify" />

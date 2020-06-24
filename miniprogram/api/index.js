@@ -1,19 +1,17 @@
-const addToShelfAPI = function (bookIndex) {
+const addToShelfAPI = function (bookId,openId) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/shelf',
+      url: 'https://127.0.0.1:8080/api/shelf/addShelf?openId='+openId+'&bookId='+bookId,
       method: 'POST',
-      data: {
-        'bookIndex': bookIndex
-      },
+    
       success: function (res) {
-        var message = res.data.message
-        resolve()
+        console.log(res)
+        var result = res.data
+        resolve(result)
         //todo
       },
       fail: function (res) {
-        var message = res.data.message
-        reject()
+      reject(res.message)
         //todo
       }
     })

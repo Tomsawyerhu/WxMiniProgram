@@ -2,6 +2,9 @@
   "component": true,
   "usingComponents": {
     "i-card": "../../dist/card/index",
-    "i-icon": "../../dist/icon/index"
+    "i-icon": "../../dist/icon/index",
+    "van-notify": "../../vant/notify/index",
+    "van-field": "../../vant/field/index",
+    "van-cell-group": "../../vant/cell-group/index"
   }
 }

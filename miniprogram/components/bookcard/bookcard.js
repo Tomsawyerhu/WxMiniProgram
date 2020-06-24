@@ -1,4 +1,6 @@
 // components/bookcard/bookcard.js
+import index from "../../api/index"
+import Notify from '../../vant/notify/notify'
 Component({
   /**
    * 组件的属性列表
@@ -41,11 +43,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    sharemethod:function (event) {
-      console.log("share")
-    },
     addmethod:function (event) {
       console.log("add")
+      var app=getApp()
+      index.addToShelfAPI(this.data.bookId,app.globalData.openId).then((res)=>{
+        if(res.success){
+        Notify({ type: 'success', message: '收藏成功' ,context:this});
+        }
+        else{
+          Notify({type:'danger',message:'已收藏过此书',context:this});
+        }
+      })
     },
     detailmethod:function(event) {
       var app = getApp()
