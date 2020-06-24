@@ -158,10 +158,6 @@ export default {
   deleteNoteAPI,
   addNoteAPI,
   requestReadRecordAPI,
-<<<<<<< HEAD
   updateProfilePhotoAPI,
-=======
-  uploadAvatarAPI,
-  getUserAvatarUrlAPI
->>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
+
 }

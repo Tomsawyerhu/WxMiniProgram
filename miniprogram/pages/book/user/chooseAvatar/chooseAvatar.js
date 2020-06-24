@@ -1,10 +1,7 @@
 // miniprogram/pages/book/user/chooseAvatar/chooseAvatar.js
 import WeCropper from '../../../../plugin/we-cropper/we-cropper.js';
-<<<<<<< HEAD
 import user from '../../../../api/user'
-=======
 
->>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
 const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth
 const height = width
@@ -122,20 +119,14 @@ Page({
   // 生成图片
 
   getCropperImage() {
-<<<<<<< HEAD
+
     this.cropper.getCropperImage(tempFilePath => {
       
-=======
-    var userApi=require('../../../../api/user.js')
-   
-    this.cropper.getCropperImage(() => {
-      var tempFilePath = this.cropper.src
->>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
+
       // tempFilePath 为裁剪后的图片临时路径
       if (tempFilePath) {
         
         // 存储图片
-<<<<<<< HEAD
         // 返回上个Page
       
         var app=getApp()
@@ -147,11 +138,7 @@ Page({
           })
         })
         
-=======
-        userApi.default.uploadAvatarAPI(tempFilePath).then(function (res) {
-          if (res == '上传成功') { alert('上传成功') }
-        })
->>>>>>> 4025a1ff99d0760ec88e8991c5a0fa34b0ed9056
+
 
       } 
     })
