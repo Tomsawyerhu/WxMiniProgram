@@ -18,18 +18,37 @@ const addToShelfAPI = function (bookId,openId) {
   })
 }
 
-const listBookAPI = function (type) {
+const shelfBookAPI = function (openId) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/shelf?type=' + type,
+      url: 'https://127.0.0.1:8080/api/shelf/getShelfBooks?openId=' + openId,
       method: 'GET',
       success: function (res) {
-        resolve()
+        console.log(res)
+        var result = res.data
+        resolve(result)
         //todo
       },
       fail: function (res) {
-        reject()
+        reject(res.message)
         //todo
+      }
+    })
+  })
+}
+const deleteShelfAPI=function(bookId){
+  return new Promise(function(resolve,reject){
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/shelf/deleteShelf?bookId='+bookId,
+      method:'GET',
+      success: function (res) {
+        console.log(res)
+        let result=res.data.content
+        resolve(result)
+      },
+      fail: function (res) {
+        reject(res.data)//带上错误信息
+
       }
     })
   })
@@ -70,7 +89,8 @@ const getBookAPI = function (id) {
 }
 export default {
   addToShelfAPI,
-  listBookAPI,
+  shelfBookAPI,
   getBookListAPI,
-  getBookAPI
+  getBookAPI,
+  deleteShelfAPI
 }

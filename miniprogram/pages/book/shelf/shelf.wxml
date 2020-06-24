@@ -3,49 +3,47 @@
 <view class="ape-emoji" >
 <image bindtap="changeEmoji" class="animated {{emojiAnimation}} " src="{{emoji}}" style="width:8vh;height:8vh"></image>
 </view>
+
+
 <view class="books-area">
-	<i-grid >
+				
+<view wx:for="{{index1}}" wx:for-index="rowindex">
+							<i-grid>
 		<i-grid-item>
-			<view style="height:20vh" class="book">
-      <image src="./img/ape1.jpg" style="height:15vh;width:10vh" bindtap="showBookInfo"></image>
-      <text style="font-size:x-small;margin-top:3vh">书名</text>
-       <text style="font-size:x-small;margin-top:1vh">阅读进度</text>
+		<view style="height:30vh" class="book">
+      <image src="{{books[rowindex*3].bookImgUrl}}" style="height:15vh;width:10vh" bindtap="showBookInfo"></image>
+      <text style="font-size:x-small;margin-top:3vh">{{books[rowindex*3].bookName}}</text>
+       <button style="font-size:x-small;margin-top:1vh" bindtap="read" wx:if="{{books[rowindex*3].bookName}}" data-index='{{rowindex*3}}' size="mini">阅读</button>
+			  <button style="font-size:x-small;margin-top:1vh" bindtap="delete" wx:if="{{books[rowindex*3].bookName}}" data-index='{{rowindex*3}}' size="mini">删除</button>
       
       </view>
 		</i-grid-item>
 		<i-grid-item>
-			<view style="height:20vh"></view>
+			<view style="height:30vh" class="book">
+      <image src="{{books[rowindex*3+1].bookImgUrl}}" style="height:15vh;width:10vh" bindtap="showBookInfo"></image>
+      <text style="font-size:x-small;margin-top:3vh">{{books[rowindex*3+1].bookName}}</text>
+       <button style="font-size:x-small;margin-top:1vh" bindtap="read" wx:if="{{books[rowindex*3+1].bookName}}" data-index='{{rowindex*3+1}}' size="mini">阅读</button>
+			   <button style="font-size:x-small;margin-top:1vh" bindtap="delete" wx:if="{{books[rowindex*3+1].bookName}}" data-index='{{rowindex*3+1}}' size="mini">删除</button>
+      
+      </view>
 		</i-grid-item>
 		<i-grid-item>
-			<view style="height:20vh"></view>
+			<view style="height:30vh" class="book">
+      <image src="{{books[rowindex*3+2].bookImgUrl}}" bindtap="read" style="height:15vh;width:10vh" bindtap="showBookInfo"></image>
+      <text style="font-size:x-small;margin-top:3vh">{{books[rowindex*3+2].bookName}}</text>
+       <button style="font-size:x-small;margin-top:1vh" bindtap="read" wx:if="{{books[rowindex*3+2].bookName}}" data-index='{{rowindex*3+2}}' size="mini">阅读</button>
+			  <button style="font-size:x-small;margin-top:1vh" bindtap="delete" wx:if="{{books[rowindex*3+2].bookName}}" data-index='{{rowindex*3+2}}' size="mini">删除</button>
+			 
+      
+      </view>
 		</i-grid-item>
 	</i-grid>
+						
+						</view>
+						</view>
 
-	<i-grid>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-	</i-grid>
-  
-	<i-grid>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-		<i-grid-item>
-			<view style="height:20vh"></view>
-		</i-grid-item>
-	</i-grid>
-  </view>
 
+	</view>
 	<i-tab-bar current="{{ current }}" fixed="true" color="#f759ab" bindchange="handleChange">
 		<i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
 		<i-tab-bar-item key="shelf" icon="group" current-icon="group_fill" title="书架"></i-tab-bar-item>
@@ -53,4 +51,3 @@
 		<i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
 	</i-tab-bar>
 
-</view>

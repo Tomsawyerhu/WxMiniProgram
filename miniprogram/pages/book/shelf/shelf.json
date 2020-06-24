@@ -6,7 +6,16 @@
     "i-grid": "../../../dist/grid/index",
     "i-grid-item": "../../../dist/grid-item/index",
     "i-grid-icon": "../../../dist/grid-icon/index",
-    "i-grid-label": "../../../dist/grid-label/index"
+    "i-grid-label": "../../../dist/grid-label/index",
+    "book-card":"../../../components/bookcard/bookcard",
+    "i-sticky": "../../../dist/sticky/index",
+    "i-sticky-item": "../../../dist/sticky-item/index",
+    "i-tag": "../../../dist/tag/index",
+    "i-notice-bar": "../../../dist/notice-bar/index",
+    "van-tab":"../../../vant/tab/index",
+    "van-tabs":"../../../vant/tabs/index",
+    "van-card":"../../../vant/card/index",
+    "van-tag":"../../../vant/tag/index"
 
   }
 }

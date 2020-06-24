@@ -1,4 +1,5 @@
 // miniprogram/pages/book/shelf/shelf.js
+import index from '../../../api/index'
 const leaveAction=['hinge','rotateOut','bounceOutLeft', 'bounceOutRight','rotateOut','zoomOut']
 const enterAction=['bounceIn', 'bounceInLeft', 'bounceInRight', 'zoomIn', 'zoomInDown', 'zoomInLeft']
 Page({
@@ -9,8 +10,10 @@ Page({
   data: {
     current: 'shelf',
     emoji:"./img/ape1.jpg",
-    emojiAnimation:''
-
+    emojiAnimation:'',
+    books:[],
+    index1: null,//行数组
+    index2: [0,1,2],//列数组
   },
 
   /**
@@ -31,7 +34,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var app=getApp()
+    var that=this
+      index.shelfBookAPI(app.globalData.openId).then((res)=>{
+        
+        that.setData({
+          books:res.content
+        })
+        
+      }).then((res)=>{
+        that.setData({
+          //+1保证底边格式
+          'index1': [...Array(Math.ceil(this.data.books.length / 3 )).keys()],
+          'index2': [...Array(3).keys()]
+        })
+      })
   },
 
   /**
@@ -68,7 +85,36 @@ Page({
   onShareAppMessage: function () {
 
   },
+  read:function(e){
+    var Index = parseInt(e.currentTarget.dataset.index);
+      console.log(this.data.books[Index]);
+      var app=getApp()
+      app.globalData.activeBookId=this.data.books[Index].id
+      wx.navigateTo({
+        url:'../read/read',
+      })
+  },
+  delete:function(e){
+    var Index=parseInt(e.currentTarget.dataset.index);
+    var self=this
+    wx.showModal({
+      content: '确定删除这本书吗',
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success: function (res) {
+        if (res.confirm) {
+          index.deleteShelfAPI(self.data.books[Index].id).then((res)=>{
+            self.onShow()
+          })
+        } else if (res.cancel) {
 
+        }
+      }
+    })
+  },
   handleChange({ detail }) {
     if (detail.key == 'homepage') {
       wx.navigateTo({
