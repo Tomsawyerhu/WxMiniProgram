@@ -319,7 +319,15 @@ Page({
   },
 
   uploadReadRecord: function (params) {
+<<<<<<< HEAD
     let data = params
+=======
+    let data = {}
+    Object.keys(params).forEach((key) => {
+      console.log(key)
+      data[key] = params[key]
+    })
+>>>>>>> e222da7d8aa8ea94df599c416a7f1b57a8c3c2c2
     var date = new Date();
     var year = date.getFullYear(); //获取当前年份
     var mon = date.getMonth() + 1; //获取当前月份
@@ -329,8 +337,13 @@ Page({
     var m = date.getMinutes(); //获取分钟
     var s = date.getSeconds(); //获取秒
     data.date = String(year) + '-' + String(mon) + '-' + String(da) + ' ' + String(h) + ":" + String(m) + ':' + String(s)
+<<<<<<< HEAD
     console.log(data)
     var app =getApp()
+=======
+    var app = getApp()
+    console.log(data)
+>>>>>>> e222da7d8aa8ea94df599c416a7f1b57a8c3c2c2
     addReadRecordAPI(data, app.globalData.openId)
   },
 

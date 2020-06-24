@@ -3,6 +3,10 @@
     "pages/book/read/read",
     "pages/book/login/login",
     "pages/book/user/user",
+<<<<<<< HEAD
+=======
+  
+>>>>>>> e222da7d8aa8ea94df599c416a7f1b57a8c3c2c2
     "pages/book/index/index",
     
 
