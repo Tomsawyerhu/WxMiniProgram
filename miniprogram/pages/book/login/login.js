@@ -115,12 +115,13 @@ Page({
       });
       var app=getApp();
 
-      app.globalData.userInfo.nickName=res.detail.userInfo.nickName
+      app.globalData.nickName=res.detail.userInfo.nickName
       app.globalData.userInfo.province=res.detail.userInfo.province
       app.globalData.userInfo.city=res.detail.userInfo.city
 
       login.requestOpenIdAPI(res.detail.userInfo.nickName).then((res)=> {
         app.globalData.openId=res.content.content.openId
+        app.globalData.profileUrl=res.content.content.profilePhotoUrl
         console.log(app.globalData.openId)
       })
         wx.navigateTo({

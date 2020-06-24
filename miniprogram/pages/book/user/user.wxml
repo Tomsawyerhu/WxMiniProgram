@@ -1,8 +1,8 @@
 <!--miniprogram/pages/book/user/user.wxml-->
 <view >
 	<view class="userinfo">
-		<image bindtap="bindAvatarTap" class="userinfo-avatar" src="img/avatar.jpg" background-size="cover"></image>
-		<text class="userinfo-nickname">nobody</text>
+		<image bindtap="bindAvatarTap" class="userinfo-avatar" src="{{profileUrl}}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{nickName}}</text>
 	</view>
 	<view class="functions">
 		<view class="item-group">

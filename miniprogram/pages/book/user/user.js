@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current:'mine'
-
+    current:'mine',
+    nickName:'',
+    profileUrl:'',
   },
 
   /**
@@ -27,7 +28,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      var app=getApp()
+      this.setData({
+        profileUrl: app.globalData.profileUrl,
+        nickName: app.globalData.nickName
+      })
   },
 
   /**

@@ -71,7 +71,29 @@ const addNoteAPI = function (openId,title,noteContent) {
     })
   })
 }
-
+const updateProfilePhotoAPI = function (openId,url) {
+  return new Promise(function ( resolve,reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/user/updateProfilePhoto',//上传头像
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },
+      data:{
+        'openId':openId,
+        "url":url
+      },
+      method:"POST",
+      success: function (res) { 
+        let result=res.content
+        resolve(result)
+      }, 
+      fail: function (res) {
+        console.log(res.message)
+        reject(res.message)//带上错误信息
+      }
+    })
+  })
+}
 const requestReadRecordAPI = function (openId,date) {
   var that = this
   return new Promise(function (resolve, reject) {
@@ -94,5 +116,6 @@ export default {
   updateNoteAPI,
   deleteNoteAPI,
   addNoteAPI,
-  requestReadRecordAPI
+  requestReadRecordAPI,
+  updateProfilePhotoAPI,
 }

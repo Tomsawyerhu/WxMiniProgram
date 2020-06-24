@@ -1,5 +1,6 @@
 // miniprogram/pages/book/user/chooseAvatar/chooseAvatar.js
 import WeCropper from '../../../../plugin/we-cropper/we-cropper.js';
+import user from '../../../../api/user'
 const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth
 const height = width
@@ -114,16 +115,27 @@ Page({
   },
 
   // 生成图片
+
   getCropperImage() {
     this.cropper.getCropperImage(tempFilePath => {
+      
       // tempFilePath 为裁剪后的图片临时路径
       if (tempFilePath) {
+        
         // 存储图片
         // 返回上个Page
+      
+        var app=getApp()
+       
+          console.log(wx.getFileSystemManager().readFileSync(tempFilePath, "base64"))
+        user.updateProfilePhotoAPI(app.globalData.openId,wx.getFileSystemManager().readFileSync(tempFilePath, "base64")).then((res)=>{
+          wx.navigateTo({
+            url: '../user',
+          })
+        })
+        
 
-      } else {
-        console.log('获取图片地址失败，请稍后重试')
-      }
+      } 
     })
   },
 
