@@ -1,5 +1,5 @@
 // miniprogram/pages/book/login/login.js
-import requestOpenIdAPI from '../../../api/login.js'
+import login from '../../../api/login.js'
 
 Page({
 
@@ -27,7 +27,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
 
           console.log("用户授权了");
-
+          
         } else {
 
           //用户没有授权
@@ -119,14 +119,14 @@ Page({
       app.globalData.userInfo.province=res.detail.userInfo.province
       app.globalData.userInfo.city=res.detail.userInfo.city
 
-      requestOpenIdAPI(res.detail.userInfo.nickName).then(function (openId) {
-        var app=getApp()
-        app.globalData.openId=openId
-      }).then(function () {
+      login.requestOpenIdAPI(res.detail.userInfo.nickName).then((res)=> {
+        app.globalData.openId=res.content.content.openId
+        console.log(app.globalData.openId)
+      })
         wx.navigateTo({
           url: '../index/index',
         })
-      })
+      
 
     } else {
 

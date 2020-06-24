@@ -1,12 +1,13 @@
 var requestOpenIdAPI=function (userName) {
   return new Promise(function (resolve,reject) {
-    console.log(userName)
+    
     wx.request({
+      
       url: 'https://127.0.0.1:8080/api/user/getOpenId?name='+userName,
       method:'GET',
       success: function (res) { 
         console.log(res)
-        let result=res.content
+        let result=res.data
         resolve(result)
       }, 
       fail: function (res) {
@@ -16,8 +17,8 @@ var requestOpenIdAPI=function (userName) {
     
   })
   
-}()
+}
 
-module.exports={
-  ' requestOpenIdAPI': requestOpenIdAPI
+export default {
+  requestOpenIdAPI,
 }
