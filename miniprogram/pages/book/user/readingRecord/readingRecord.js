@@ -59,13 +59,15 @@ Page({
     else{
       a=year+"-"+mon+"-"+da
     }
+    this.setData({
+      date:a
+    })
     var app = getApp()
     var that = this
     var userApi=require('../../../../api/user.js')
     userApi.default.requestReadRecordAPI(app.globalData.openId, that.data.date).then(function (record) {
       that.setData({
         recordData: record,
-        date:a
       })
     })
   },

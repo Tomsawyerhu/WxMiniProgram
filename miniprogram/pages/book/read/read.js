@@ -12,8 +12,8 @@ Page({
     pages: ["page1", "page2", "page3", "page4"], // 页
     directories: ['正在加载中 请稍候'],//目录
     bookId: '',
-    bookName: "百年孤独",//书名
-    author: "马尔克斯",//作者
+    bookName: "",//书名
+    author: "",//作者
 
     //记录触摸位置
     touchS: [0, 0],
