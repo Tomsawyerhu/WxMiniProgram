@@ -24,7 +24,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: '2020-06-18',
+    date: '',
     animationType: 'animated ' + animateData['Bouncing Entrances'][2],
     recordData: ''
 
@@ -48,13 +48,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var date = new Date();
+    var year = date.getFullYear(); //获取当前年份
+    var mon = date.getMonth() + 1; //获取当前月份
+    var da = date.getDate(); //获取当前日
+    var a;
+    if(mon<10){
+        a=year+"-0"+mon+"-"+da
+    }
+    else{
+      a=year+"-"+mon+"-"+da
+    }
     var app = getApp()
     var that = this
     var userApi=require('../../../../api/user.js')
     userApi.default.requestReadRecordAPI(app.globalData.openId, that.data.date).then(function (record) {
       that.setData({
-        recordData: record
+        recordData: record,
+        date:a
       })
     })
   },

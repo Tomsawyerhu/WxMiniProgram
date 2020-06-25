@@ -53,10 +53,10 @@ const deleteShelfAPI=function(bookId){
     })
   })
 }
-const getBookListAPI = function (type,content) {
+const getBookListAPI = function (content) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'https://127.0.0.1:8080/api/book/getBookList?type=' + type+'&content='+content,
+      url: 'https://127.0.0.1:8080/api/book/getBookList?content='+content,
       method: 'GET',
       success: function (res) {
         console.log(res)
@@ -87,6 +87,7 @@ const getBookAPI = function (id) {
     })
   })
 }
+
 export default {
   addToShelfAPI,
   shelfBookAPI,

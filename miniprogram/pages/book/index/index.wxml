@@ -70,7 +70,6 @@
 								
 								</view>
 								<view slot="footer">
-									<van-tag plain size="medium" type="primary">分享</van-tag>
 									<van-tag plain size="medium" color="#f2826a">收藏</van-tag>
 								</view>
 							</van-card>
@@ -78,7 +77,6 @@
 						</scroll-view>
 					</van-tab>
 
-					<van-tab title="劲爆活动" name="c">暂无活动</van-tab>
 
 				</van-tabs>
 			</view>

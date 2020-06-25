@@ -1,19 +1,16 @@
 // miniprogram/pages/book/search/search.js
+import index from '../../../api/index' 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue:'',
-    latelyUsedWords: [],
-    hotWords: [],
-    //限制每行span的个数
-    spanLimit: 3,
-    //限制每个span最多显示的字符数
-    spanCharLimit: 4,
-    hotWordsSplit: [],
-    colors:['#7232dd','#ffe1e1','#f2826a','green','red','blue']
+        index1:[0,1,2,3],
+        index2:[0,1],
+        books:[],
+        haveresult:true,
+
   },
 
   /**
@@ -22,12 +19,7 @@ Page({
   onLoad: function (options) {
     //todo 加载热词数据
     //todo 加载最近搜索关键词
-    this.setData({
-      hotWords: ["屌丝", "打酱油", "萝莉", "拼爹", "干物女", "神马都是浮云", "裸体烟", "草泥马", "吐槽", "神马都是浮云", "神马都是浮云"],
-      latelyUsedWords: ["屌丝", "打酱油", "萝莉", "拼爹", "干物女", "神马都是浮云","屌丝", "打酱油"]
-    })
-    this.splitHotWords()
-    console.log(this.data.hotWordsSplit)
+  
   },
 
   /**
@@ -41,7 +33,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      this.setData({
+        index1:[],
+        index2:[],
+        books:[]
+      })
   },
 
   /**
@@ -124,13 +120,45 @@ Page({
   },
 
   onSearch:function(e){
-    v=e.detail
+    var v=e.detail
     this.search(v)
   },
 
   search:function(v){
     //todo 搜索
     console.log(v)
+    var that=this
+    if(v!=''){
+      index.getBookListAPI(v).then((res) => {
+        that.setData({
+          books: res,
+          
+        })
+      
+        that.setData({
+          booksnum:this.data.books.length
+        })
+        if(this.data.booksNum!=0){
+          that.setData({
+            haveresult:false,
+          })
+        }
+        else{
+          that.setData({
+            haveresult:true
+          })
+        }
+        that.setData({
+          //+1保证底边格式
+          'index1': [...Array(Math.ceil(this.data.booksnum / 2 )).keys()],
+          'index2': [...Array(2).keys()]
+        })
+        
+      }).catch((res) => {
+        //todo
+      })
+    }
+    
   },
 
   tapKeyWord:function(e){

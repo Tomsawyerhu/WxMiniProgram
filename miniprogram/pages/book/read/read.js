@@ -10,7 +10,7 @@ Page({
     line: 15,
     word: 9,
     pages: ["page1", "page2", "page3", "page4"], // 页
-    directories: ['a', 'b', 'c'],//目录
+    directories: ['正在加载中 请稍候'],//目录
     bookId: '',
     bookName: "百年孤独",//书名
     author: "马尔克斯",//作者
@@ -315,7 +315,11 @@ Page({
         pages: data,
         pagenum:0
       })
+      this.setData({
+        'showDirectory':false
+      });
     })
+    
   },
 
   uploadReadRecord: function (params) {

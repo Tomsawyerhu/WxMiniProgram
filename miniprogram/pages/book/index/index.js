@@ -67,7 +67,8 @@ Page({
   onShow: function () {
     let that=this
     var app = getApp()
-    index.getBookListAPI('','').then((res) => {
+
+    index.getBookListAPI('').then((res) => {
       that.setData({
         books: res,
         
