@@ -17,7 +17,7 @@
 
     "i-tag": "../../../dist/tag/index",
     "i-notice-bar": "../../../dist/notice-bar/index",
-
+    "van-notify": "../../vant/notify/index",
     "van-tab":"../../../vant/tab/index",
     "van-tabs":"../../../vant/tabs/index",
     "van-card":"../../../vant/card/index",

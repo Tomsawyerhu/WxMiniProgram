@@ -1,5 +1,6 @@
 // miniprogram/pages/book/index/index.js
 import index from '../../../api/index'
+import Notify from '../../../vant/notify/notify'
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
     px: ['文学', '历史', '科技', '小说'],
     bookperline: 2,
     books: [],
+    goodbooks:[],
     booksnum: 0,
     index1: null,//行数组
     index2: null,//列数组
@@ -22,7 +24,7 @@ Page({
     shelf: function (event) {
       console.log("收藏")
     },
-    dailyRecommend: ['文学', '历史', '科技', '小说']
+
 
 
   },
@@ -69,6 +71,11 @@ Page({
       
     }).catch((res) => {
       //todo
+    })
+    index.getGoodBookListAPI('').then((res)=>{
+      that.setData({
+        goodbooks: res,
+      })
     })
 
   },
@@ -121,7 +128,31 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  addmethod:function (e) {
+    var Index = parseInt(e.currentTarget.dataset.index);
+    var app=getApp()
+    index.addToShelfAPI(this.data.goodbooks[Index].id,app.globalData.openId).then((res)=>{
+      if(res.success){
+      Notify({ type: 'success', message: '收藏成功' ,context:this});
+      }
+      else{
+        Notify({type:'danger',message:'已收藏过此书',context:this});
+      }
+    })
+  },
+  detailmethod:function(e) {
+    var app = getApp()
+    var Index = parseInt(e.currentTarget.dataset.index);
+    var book=this.data.goodbooks[Index]
+    app.globalData.activeBookId=book.id,
+    app.globalData.activeBookName=book.bookName,
+    app.globalData.activeBookImgUrl=book.bookImgUrl,
+    app.globalData.activeBookAuthor=book.bookAuthor,
+    app.globalData.activeBookDescription=book.bookDescription,
+    wx.navigateTo({
+      url: '../../../pages/book/detail/detail',
+    })
+  },
   startSearch: function () {
     wx.navigateTo({
       url: '../search/search',

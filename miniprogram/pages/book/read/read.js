@@ -152,7 +152,7 @@ Page({
   onHide: function () {
     //添加阅读记录
     var data = {
-      'action': 'finish reading',
+      'action': 'listen book',
       'bookId': this.data.bookId,
       'charpter': this.data.charpternum,
       'page': this.data.pagenum

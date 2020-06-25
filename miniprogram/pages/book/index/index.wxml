@@ -63,14 +63,13 @@
 					<van-tab title="每日推荐" name="b">
 						<scroll-view scroll-y>
 						<view style="height:5vh"></view>
-							<van-card wx:for="{{dailyRecommend}}" wx:for-index="recoindex" tag="每日推荐" desc="描述信息" title="书名" thumb="https://bookstorage.oss-cn-hangzhou.aliyuncs.com/image/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.jpg" >
-								<view slot="tags">
-									<van-tag size="medium" type="primary">文学</van-tag>
-									<van-tag size="medium" type="primary">经典</van-tag>
-								
+							<van-card wx:for="{{goodbooks}}" wx:for-index="recoindex" tag="每日推荐" desc="{{goodbooks[recoindex].bookDescription}}" title='{{goodbooks[recoindex].bookName}}' thumb="{{goodbooks[recoindex].bookImgUrl}}" >
+								<view slot="tags" wx:for="{{goodbooks[recoindex].labels}}"  wx:for-index="index">
+									<van-tag size="medium" type="primary">{{goodbooks[recoindex].labels[index]}}</van-tag>
 								</view>
 								<view slot="footer">
-									<van-tag plain size="medium" color="#f2826a">收藏</van-tag>
+									<van-tag plain size="medium" color="green" bindtap="detailmethod" data-index='{{recoindex}}'>查看详情</van-tag>
+									<van-tag plain size="medium" color="#f2826a" bindtap="addmethod" data-index='{{recoindex}}'>收藏</van-tag>
 								</view>
 							</van-card>
 							<view style="height:20vh"></view>
@@ -80,9 +79,10 @@
 
 				</van-tabs>
 			</view>
+			
 		</i-sticky-item>
 	</i-sticky>
-
+ <van-notify id="van-notify" />
 
 </view>
 <!--底部标签栏-->

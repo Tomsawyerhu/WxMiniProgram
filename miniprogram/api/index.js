@@ -70,6 +70,23 @@ const getBookListAPI = function (content) {
     })
   })
 }
+const getGoodBookListAPI = function () {
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://127.0.0.1:8080/api/book/getGoodBookList',
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        let result=res.data.content
+        resolve(result)
+      },
+      fail: function (res) {
+        reject(res.data)//带上错误信息
+
+      }
+    })
+  })
+}
 const getBookAPI = function (id) {
   return new Promise(function (resolve, reject) {
     wx.request({
@@ -93,5 +110,6 @@ export default {
   shelfBookAPI,
   getBookListAPI,
   getBookAPI,
-  deleteShelfAPI
+  deleteShelfAPI,
+  getGoodBookListAPI
 }

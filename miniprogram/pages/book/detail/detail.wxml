@@ -1,14 +1,10 @@
 <i-card thumb="{{bookImgUrl}}">
 	<view slot="content">
-		<text class="title" style="font-size:15px">{{bookName}}</text>
+		<text class="title" style="font-size:20px ;font-weight:bold">{{bookName}}</text>
+		<text>\n</text>
+		<text style="font-size:15px" >作者：{{Author}}</text>
 		<view class="content-item">
-			<view>
-				推荐指数
-				<i-rate value="{{starIndex}}">
-				</i-rate>
-			</view>
-			<view class="silver-small float-right-bottom">{{readers}}人读过</view>
-			
+
 		</view>
 
 	<view slot="footer">
@@ -30,8 +26,9 @@
 			</i-collapse>
 			
 	</view>
-	<view bindtap="comment" style="margin-top:5vh;margin-left:5vh;font-style: oblique;">请留下你的评价哦~~</view>
+	<!--<view bindtap="comment" style="margin-top:5vh;margin-left:5vh;font-style: oblique;">请留下你的评价哦~~</view>-->
 	</view>
+
 		<view style="margin-top:5vh;margin-left:5vh;font-style: oblique;"> 
 		<text>\n</text> </view>
 		<view style="margin-top:5vh;margin-left:5vh;font-style: oblique;"> 
